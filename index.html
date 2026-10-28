@@ -1,708 +1,3479 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="cyber">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aaryan Bista — Software Engineer</title>
+<title>Aaryan Bista // Retro-Modern Cyberdeck Portfolio</title>
+<meta name="description" content="Portfolio of Aaryan Bista — Software Engineer, AI & Computer Vision Builder, SXC Sandbox Hackathon 2.0 Champion. Pure code-crafted retro-modern cyberdeck interface.">
+
+<!-- Retro-Modern Typography: Space Grotesk, Outfit, Press Start 2P, VT323, JetBrains Mono -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Outfit:wght@400;600;700;800;900&family=Press+Start+2P&family=Space+Grotesk:wght@500;600;700&family=VT323&display=swap" rel="stylesheet">
+
 <style>
-:root{
-  --bg:#060a14;
-  --bg-alt:#0b1120;
-  --surface:#0f1830;
-  --surface-2:#142140;
-  --primary:#4A90D9;
-  --primary-light:#8FC1F0;
-  --accent:#63E6E8;
-  --text:#EAF1FB;
-  --text-muted:#8FA3C4;
-  --border:rgba(74,144,217,0.18);
-  --border-strong:rgba(74,144,217,0.4);
+/* ==========================================================================
+   CSS CUSTOM PROPERTIES & RETRO DESIGN PALETTES
+   ========================================================================== */
+:root {
+  /* Default: Cyber Neon Theme */
+  --bg-deep: #07050f;
+  --bg-surface: #0e0a1f;
+  --bg-surface-2: #161031;
+  --bg-card: rgba(18, 13, 38, 0.9);
+  --border: rgba(0, 240, 255, 0.22);
+  --border-strong: rgba(0, 240, 255, 0.55);
+  --border-glow: rgba(0, 240, 255, 0.85);
+  
+  --primary: #00f0ff;          /* Cyber Cyan */
+  --primary-rgb: 0, 240, 255;
+  --accent: #ff007a;           /* Neon Magenta */
+  --accent-rgb: 255, 0, 122;
+  --secondary: #ffe600;        /* Arcade Amber Yellow */
+  --secondary-rgb: 255, 230, 0;
+  --success: #00ff88;          /* Phosphor Green */
+  --success-rgb: 0, 255, 136;
+  
+  --text-main: #f0f6ff;
+  --text-muted: #959cb8;
+  --text-dim: #5c6280;
+  
+  --scanline-opacity: 0.15;
+  --glow-intensity: 0 0 16px rgba(var(--primary-rgb), 0.45);
+  --glow-accent: 0 0 16px rgba(var(--accent-rgb), 0.45);
+  --radius-sm: 4px;
+  --radius-md: 10px;
+  --radius-lg: 18px;
+  --font-display: 'Outfit', sans-serif;
+  --font-tech: 'Space Grotesk', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-pixel: 'Press Start 2P', monospace;
+  --font-crt: 'VT323', monospace;
 }
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{
-  background:var(--bg);
-  color:var(--text);
-  font-family:'Inter',sans-serif;
-  overflow-x:hidden;
-  -webkit-font-smoothing:antialiased;
-}
-::selection{background:var(--primary);color:#04070d;}
-h1,h2,h3,.display{font-family:'Space Grotesk',sans-serif;}
-.mono{font-family:'JetBrains Mono',monospace;}
-a{color:inherit;text-decoration:none;}
-img{max-width:100%;display:block;}
 
-@media (prefers-reduced-motion: reduce){
-  *{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important;scroll-behavior:auto !important;}
+[data-theme="amber"] {
+  --bg-deep: #0c0802;
+  --bg-surface: #180f03;
+  --bg-surface-2: #271705;
+  --bg-card: rgba(28, 17, 5, 0.92);
+  --border: rgba(255, 170, 0, 0.28);
+  --border-strong: rgba(255, 170, 0, 0.65);
+  --border-glow: rgba(255, 170, 0, 0.9);
+  
+  --primary: #ffaa00;
+  --primary-rgb: 255, 170, 0;
+  --accent: #ff5500;
+  --accent-rgb: 255, 85, 0;
+  --secondary: #ffe57f;
+  --secondary-rgb: 255, 229, 127;
+  --success: #ffc107;
+  --success-rgb: 255, 193, 7;
+  
+  --text-main: #fff0d4;
+  --text-muted: #c9a674;
+  --text-dim: #7d613c;
+  --glow-intensity: 0 0 18px rgba(255, 170, 0, 0.5);
+  --glow-accent: 0 0 18px rgba(255, 85, 0, 0.5);
 }
 
-.container{max-width:1180px;margin:0 auto;padding:0 32px;}
+[data-theme="matrix"] {
+  --bg-deep: #020b05;
+  --bg-surface: #04170a;
+  --bg-surface-2: #082612;
+  --bg-card: rgba(6, 26, 12, 0.92);
+  --border: rgba(0, 255, 115, 0.28);
+  --border-strong: rgba(0, 255, 115, 0.65);
+  --border-glow: rgba(0, 255, 115, 0.9);
+  
+  --primary: #00ff73;
+  --primary-rgb: 0, 255, 115;
+  --accent: #76ff03;
+  --accent-rgb: 118, 255, 3;
+  --secondary: #b2ff59;
+  --secondary-rgb: 178, 255, 89;
+  --success: #00e676;
+  --success-rgb: 0, 230, 118;
+  
+  --text-main: #e8f5e9;
+  --text-muted: #81c784;
+  --text-dim: #388e3c;
+  --glow-intensity: 0 0 18px rgba(0, 255, 115, 0.5);
+  --glow-accent: 0 0 18px rgba(118, 255, 3, 0.5);
+}
 
-/* ---------- NAV ---------- */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:20px 40px;
-  background:rgba(6,10,20,0.7);
-  backdrop-filter:blur(14px);
-  -webkit-backdrop-filter:blur(14px);
-  border-bottom:1px solid transparent;
-  transition:border-color .3s ease, background .3s ease;
+/* ==========================================================================
+   RESET & CORE BASE
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-nav.scrolled{border-bottom-color:var(--border);background:rgba(6,10,20,0.92);}
-.nav-logo{
-  font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.15rem;
-  letter-spacing:0.02em;display:flex;align-items:center;gap:8px;
-}
-.nav-logo .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent);}
-.nav-links{display:flex;gap:34px;font-size:0.88rem;}
-.nav-links a{color:var(--text-muted);position:relative;padding:4px 0;transition:color .25s;}
-.nav-links a:hover{color:var(--text);}
-.nav-links a::after{
-  content:'';position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--primary-light);
-  transition:width .3s ease;
-}
-.nav-links a:hover::after{width:100%;}
-.nav-toggle{display:none;background:none;border:none;color:var(--text);font-size:1.4rem;cursor:pointer;}
 
-@media (max-width:820px){
-  .nav-links{
-    position:fixed;top:64px;right:0;left:0;
-    background:rgba(6,10,20,0.98);
-    flex-direction:column;gap:0;
-    padding:8px 40px 20px;
-    border-bottom:1px solid var(--border);
-    transform:translateY(-130%);opacity:0;
-    transition:transform .35s ease, opacity .3s ease;
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  background-color: var(--bg-deep);
+}
+
+body {
+  background-color: var(--bg-deep);
+  color: var(--text-main);
+  font-family: var(--font-tech), sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  position: relative;
+}
+
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+/* ==========================================================================
+   CRT SCREEN EMULATION & SCANLINES
+   ========================================================================== */
+.crt-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 99999;
+  transition: opacity 0.3s ease;
+}
+
+.crt-overlay.active::before {
+  content: " ";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.35) 50%);
+  background-size: 100% 4px;
+  z-index: 100000;
+  opacity: var(--scanline-opacity);
+}
+
+.crt-overlay.active::after {
+  content: " ";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 65%, rgba(0, 0, 0, 0.55) 100%);
+  z-index: 100001;
+  box-shadow: inset 0 0 80px rgba(0,0,0,0.6);
+}
+
+/* Subtle CRT curvature effect when active */
+body.crt-curved {
+  animation: crtFlicker 0.15s infinite;
+}
+
+@keyframes crtFlicker {
+  0% { opacity: 0.995; }
+  50% { opacity: 1; }
+  100% { opacity: 0.998; }
+}
+
+/* ==========================================================================
+   GRID BACKGROUND & DECORATIVE NOISE
+   ========================================================================== */
+.cyber-bg-grid {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background-image: 
+    linear-gradient(to right, rgba(var(--primary-rgb), 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(var(--primary-rgb), 0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+
+.cyber-vignette {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(circle at 50% 20%, rgba(var(--primary-rgb), 0.08), transparent 70%),
+              radial-gradient(circle at 80% 80%, rgba(var(--accent-rgb), 0.06), transparent 60%);
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   TOP TELEMETRY & HARDWARE STATUS BAR
+   ========================================================================== */
+.top-telemetry-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 32px;
+  background: rgba(8, 5, 17, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+  z-index: 1001;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+
+.telemetry-left, .telemetry-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.live-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--success);
+  font-weight: 700;
+}
+
+.live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--success);
+  box-shadow: 0 0 8px var(--success);
+  animation: pulseDot 1.4s infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.8); }
+}
+
+.hud-btn {
+  background: rgba(var(--primary-rgb), 0.08);
+  border: 1px solid var(--border);
+  color: var(--text-main);
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  font-size: 0.68rem;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.hud-btn:hover {
+  background: var(--primary);
+  color: var(--bg-deep);
+  border-color: var(--primary);
+  box-shadow: var(--glow-intensity);
+}
+
+.hud-btn.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+  box-shadow: var(--glow-accent);
+}
+
+.sound-bars {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 10px;
+}
+.sound-bar {
+  width: 2px;
+  background: currentColor;
+  height: 4px;
+}
+.hud-btn.active .sound-bar:nth-child(1) { animation: soundAnim 0.6s infinite ease-in-out; }
+.hud-btn.active .sound-bar:nth-child(2) { animation: soundAnim 0.8s infinite 0.2s ease-in-out; }
+.hud-btn.active .sound-bar:nth-child(3) { animation: soundAnim 0.5s infinite 0.4s ease-in-out; }
+@keyframes soundAnim {
+  0%, 100% { height: 3px; }
+  50% { height: 10px; }
+}
+
+/* ==========================================================================
+   NAVIGATION
+   ========================================================================== */
+nav {
+  position: fixed;
+  top: 32px;
+  left: 0;
+  right: 0;
+  height: 68px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 36px;
+  background: rgba(10, 7, 22, 0.8);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+  transition: all 0.3s ease;
+}
+
+nav.scrolled {
+  background: rgba(7, 5, 15, 0.95);
+  border-bottom-color: var(--border-strong);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.8);
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-pixel);
+  font-size: 0.85rem;
+  letter-spacing: -0.02em;
+  color: var(--primary);
+  text-shadow: var(--glow-intensity);
+}
+
+.brand-bracket {
+  color: var(--accent);
+}
+
+.nav-links {
+  display: flex;
+  gap: 28px;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.nav-links a {
+  color: var(--text-muted);
+  position: relative;
+  padding: 6px 2px;
+  transition: color 0.25s ease;
+}
+
+.nav-links a:hover {
+  color: var(--primary);
+  text-shadow: var(--glow-intensity);
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: var(--primary);
+  box-shadow: var(--glow-intensity);
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-right-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-terminal-trigger {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  background: rgba(var(--primary-rgb), 0.1);
+  border: 1px solid var(--border);
+  color: var(--primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.25s ease;
+}
+
+.nav-terminal-trigger:hover {
+  background: var(--primary);
+  color: var(--bg-deep);
+  box-shadow: var(--glow-intensity);
+  transform: translateY(-1px);
+}
+
+.mobile-toggle {
+  display: none;
+  font-size: 1.4rem;
+  color: var(--primary);
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   LAYOUT CONTAINERS & COMMON STYLES
+   ========================================================================== */
+.container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+section {
+  padding: 130px 0;
+  position: relative;
+}
+
+.section-header {
+  margin-bottom: 60px;
+  position: relative;
+}
+
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: rgba(var(--accent-rgb), 0.1);
+  border: 1px solid rgba(var(--accent-rgb), 0.3);
+  padding: 4px 12px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 16px;
+}
+
+.section-tag::before {
+  content: "■";
+  font-size: 0.6rem;
+  color: var(--accent);
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #fff;
+  margin-bottom: 16px;
+}
+
+.section-title .neon-span {
+  color: var(--primary);
+  text-shadow: var(--glow-intensity);
+}
+
+.section-desc {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  max-width: 650px;
+  line-height: 1.7;
+}
+
+/* Retro buttons */
+.btn-retro {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 28px;
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: var(--radius-sm);
+  position: relative;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.btn-retro-primary {
+  background: var(--primary);
+  color: var(--bg-deep);
+  border-color: var(--primary);
+  box-shadow: var(--glow-intensity);
+}
+
+.btn-retro-primary:hover {
+  background: #fff;
+  border-color: #fff;
+  color: #000;
+  transform: translateY(-2px);
+  box-shadow: 0 0 25px rgba(var(--primary-rgb), 0.8);
+}
+
+.btn-retro-accent {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+  box-shadow: var(--glow-accent);
+}
+
+.btn-retro-accent:hover {
+  background: #fff;
+  color: #000;
+  border-color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 0 25px rgba(var(--accent-rgb), 0.8);
+}
+
+.btn-retro-outline {
+  background: rgba(var(--primary-rgb), 0.05);
+  border-color: var(--border-strong);
+  color: var(--text-main);
+}
+
+.btn-retro-outline:hover {
+  background: rgba(var(--primary-rgb), 0.15);
+  border-color: var(--primary);
+  color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: var(--glow-intensity);
+}
+
+/* ==========================================================================
+   HERO SECTION // 3D SYNTH HORIZON CANVAS
+   ========================================================================== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding-top: 100px;
+  padding-bottom: 60px;
+  text-align: center;
+}
+
+#hero-synth-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  padding: 0 20px;
+}
+
+.hero-hardware-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  color: var(--primary);
+  padding: 6px 18px;
+  border-radius: 999px;
+  background: rgba(var(--primary-rgb), 0.08);
+  border: 1px solid var(--border);
+  box-shadow: inset 0 0 10px rgba(var(--primary-rgb), 0.15);
+  margin-bottom: 26px;
+  animation: heroFadeUp 0.8s ease forwards 0.1s;
+  opacity: 0;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 7.5vw, 5.8rem);
+  font-weight: 900;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  color: #fff;
+  opacity: 0;
+  animation: heroFadeUp 0.9s ease forwards 0.25s;
+}
+
+.hero-title .glitch-word {
+  display: inline-block;
+  color: var(--primary);
+  text-shadow: var(--glow-intensity);
+}
+
+.hero-subtitle {
+  font-family: var(--font-tech);
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  color: var(--text-muted);
+  max-width: 720px;
+  margin: 0 auto 36px;
+  line-height: 1.6;
+  opacity: 0;
+  animation: heroFadeUp 0.9s ease forwards 0.4s;
+}
+
+.hero-terminal-pill {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 8px 18px;
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  color: var(--secondary);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  margin-bottom: 36px;
+}
+
+.terminal-prompt {
+  color: var(--accent);
+  margin-right: 8px;
+  font-weight: 700;
+}
+
+.terminal-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 18px;
+  background: var(--primary);
+  margin-left: 6px;
+  animation: blink 0.8s infinite;
+  vertical-align: middle;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: heroFadeUp 0.9s ease forwards 0.55s;
+}
+
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  color: var(--text-muted);
+  z-index: 2;
+  opacity: 0;
+  animation: heroFadeUp 1s ease forwards 0.8s;
+}
+
+.scroll-down-arrow {
+  width: 1px;
+  height: 38px;
+  background: linear-gradient(var(--primary), transparent);
+  animation: scrollDownAnim 2s infinite ease-in-out;
+}
+
+@keyframes scrollDownAnim {
+  0% { transform: scaleY(0); transform-origin: top; opacity: 0; }
+  50% { transform: scaleY(1); transform-origin: top; opacity: 1; }
+  100% { transform: scaleY(1); transform-origin: bottom; opacity: 0; }
+}
+
+/* ==========================================================================
+   RETRO MARQUEE BAND
+   ========================================================================== */
+.retro-marquee-wrap {
+  width: 100%;
+  overflow: hidden;
+  background: rgba(var(--primary-rgb), 0.08);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 0;
+  position: relative;
+  z-index: 10;
+  user-select: none;
+}
+
+.retro-marquee {
+  display: flex;
+  white-space: nowrap;
+  animation: marqueeLoop 24s linear infinite;
+  font-family: var(--font-pixel);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: var(--primary);
+  text-shadow: var(--glow-intensity);
+}
+
+.marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  padding: 0 20px;
+}
+
+.marquee-symbol {
+  color: var(--accent);
+}
+
+@keyframes marqueeLoop {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ==========================================================================
+   ABOUT // PILOT DOSSIER & RETRO CRT OSCILLOSCOPE MONITOR
+   ========================================================================== */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.pilot-dossier-text p {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.pilot-dossier-text strong {
+  color: #fff;
+  font-weight: 600;
+}
+
+.pilot-spec-sheet {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin: 28px 0;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+}
+
+.spec-entry {
+  background: rgba(var(--primary-rgb), 0.05);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+}
+
+.spec-key {
+  color: var(--accent);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 4px;
+}
+
+.spec-val {
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+.dossier-stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 36px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+
+.dossier-stat-num {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--primary);
+  text-shadow: var(--glow-intensity);
+  line-height: 1;
+}
+
+.dossier-stat-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+  text-transform: uppercase;
+}
+
+/* Retro CRT Hardware Terminal Unit */
+.pilot-crt-terminal-box {
+  background: #080612;
+  border: 2px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.8),
+              0 0 30px rgba(var(--primary-rgb), 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.crt-terminal-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px dashed var(--border);
+  padding-bottom: 12px;
+  margin-bottom: 18px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--primary);
+}
+
+.crt-screen-bezel {
+  background: #020206;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 0 40px rgba(0,0,0,0.9);
+}
+
+.crt-screen-bezel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 240, 255, 0.05) 50%);
+  background-size: 100% 4px;
+  pointer-events: none;
+}
+
+.pilot-ascii-art {
+  font-family: var(--font-mono);
+  font-size: clamp(0.6rem, 1.2vw, 0.78rem);
+  line-height: 1.15;
+  color: var(--primary);
+  text-shadow: var(--glow-intensity);
+  white-space: pre;
+  margin-bottom: 16px;
+  overflow-x: hidden;
+  user-select: none;
+}
+
+/* Live Oscilloscope Waveform Canvas */
+#pilot-scope-canvas {
+  width: 100%;
+  height: 80px;
+  display: block;
+  background: rgba(0, 240, 255, 0.02);
+  border-top: 1px solid rgba(var(--primary-rgb), 0.2);
+  border-bottom: 1px solid rgba(var(--primary-rgb), 0.2);
+  margin-bottom: 16px;
+}
+
+.pilot-crt-telemetry-list {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.pilot-crt-telemetry-list span strong {
+  color: var(--primary);
+}
+
+/* ==========================================================================
+   SKILLS // HARDWARE MODULES & CARTRIDGE RACK
+   ========================================================================== */
+.skills-rack {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 28px;
+}
+
+.skill-cartridge {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.skill-cartridge:hover {
+  border-color: var(--primary);
+  transform: translateY(-5px);
+  box-shadow: 0 14px 30px -10px rgba(0, 0, 0, 0.8),
+              0 0 20px rgba(var(--primary-rgb), 0.25);
+}
+
+.skill-module-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+  border-bottom: 1px dashed var(--border);
+  padding-bottom: 12px;
+}
+
+.skill-module-title {
+  font-family: var(--font-mono);
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.skill-pins {
+  display: flex;
+  gap: 3px;
+}
+
+.skill-pin {
+  width: 4px;
+  height: 12px;
+  background: var(--border-strong);
+  border-radius: 1px;
+}
+
+.skill-cartridge:hover .skill-pin {
+  background: var(--primary);
+  box-shadow: 0 0 6px var(--primary);
+}
+
+.skill-tags-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skill-pill {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  background: rgba(var(--primary-rgb), 0.06);
+  border: 1px solid var(--border);
+  color: var(--text-main);
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.skill-pill:hover {
+  background: rgba(var(--primary-rgb), 0.18);
+  border-color: var(--primary);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 0 10px rgba(var(--primary-rgb), 0.3);
+}
+
+.skill-pill .pill-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--primary);
+}
+
+/* ==========================================================================
+   FEATURED PROJECTS // ARCADE VAULT
+   ========================================================================== */
+.projects-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 40px;
+  justify-content: center;
+}
+
+.filter-btn {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 8px 18px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: rgba(var(--primary-rgb), 0.05);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+  border-color: var(--primary);
+  color: var(--text-main);
+}
+
+.filter-btn.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--bg-deep);
+  font-weight: 700;
+  box-shadow: var(--glow-intensity);
+}
+
+/* Featured Showcases (VisionMate Interactive CV HUD & RAG Vector Matrix) */
+.featured-showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+  gap: 36px;
+  margin-bottom: 40px;
+}
+
+.featured-project-card {
+  background: var(--bg-card);
+  border: 1.5px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 20px 45px -15px rgba(0, 0, 0, 0.8),
+              0 0 25px rgba(var(--primary-rgb), 0.12);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.featured-project-card:hover {
+  border-color: var(--primary);
+  transform: translateY(-6px);
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.9),
+              0 0 35px rgba(var(--primary-rgb), 0.3);
+}
+
+.featured-canvas-box {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: #020208;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+}
+
+.interactive-project-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.canvas-interactive-hint {
+  position: absolute;
+  bottom: 10px;
+  right: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--primary);
+  background: rgba(0, 0, 0, 0.7);
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(var(--primary-rgb), 0.3);
+  pointer-events: none;
+}
+
+.featured-badge-pill {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 2;
+  font-family: var(--font-pixel);
+  font-size: 0.62rem;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  background: rgba(0, 0, 0, 0.85);
+  border: 1px solid var(--accent);
+  color: #fff;
+  text-shadow: var(--glow-accent);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.featured-badge-pill.gold {
+  border-color: var(--secondary);
+  color: var(--secondary);
+  text-shadow: 0 0 10px rgba(var(--secondary-rgb), 0.7);
+}
+
+.featured-content-box {
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.featured-title {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.featured-desc {
+  font-size: 0.98rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 22px;
+  flex-grow: 1;
+}
+
+.featured-tags-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.featured-tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  background: rgba(var(--primary-rgb), 0.08);
+  border: 1px solid var(--border);
+  color: var(--primary);
+}
+
+.featured-actions-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Secondary Projects Grid */
+.projects-standard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 26px;
+}
+
+.standard-project-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 26px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.standard-project-card:hover {
+  border-color: var(--border-strong);
+  transform: translateY(-4px);
+  box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.8),
+              0 0 20px rgba(var(--primary-rgb), 0.15);
+}
+
+.card-top-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.card-index {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--accent);
+  letter-spacing: 0.05em;
+  font-weight: 700;
+}
+
+.card-quick-links {
+  display: flex;
+  gap: 8px;
+}
+
+.quick-icon-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: rgba(var(--primary-rgb), 0.05);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  transition: all 0.2s ease;
+}
+
+.quick-icon-btn:hover {
+  background: var(--primary);
+  color: var(--bg-deep);
+  border-color: var(--primary);
+  box-shadow: var(--glow-intensity);
+  transform: translateY(-1px);
+}
+
+.card-title {
+  font-family: var(--font-tech);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.card-desc {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+
+/* ==========================================================================
+   SXC HACKATHON 2.0 // GRAND PRIX TROPHY ARENA
+   ========================================================================== */
+.trophy-arena-card {
+  background: linear-gradient(135deg, rgba(255, 230, 0, 0.08), rgba(255, 0, 122, 0.08), var(--bg-surface));
+  border: 2px solid var(--secondary);
+  border-radius: var(--radius-lg);
+  padding: 56px 48px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.9),
+              0 0 35px rgba(var(--secondary-rgb), 0.25);
+}
+
+.trophy-arena-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(var(--secondary-rgb), 0.2), transparent 70%);
+  pointer-events: none;
+}
+
+.trophy-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-pixel);
+  font-size: 0.72rem;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.85);
+  border: 1.5px solid var(--secondary);
+  color: var(--secondary);
+  text-shadow: 0 0 12px rgba(var(--secondary-rgb), 0.8);
+  margin-bottom: 24px;
+}
+
+.trophy-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 800;
+  line-height: 1.2;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.trophy-title .gold-span {
+  color: var(--secondary);
+  text-shadow: 0 0 20px rgba(var(--secondary-rgb), 0.6);
+}
+
+.trophy-desc {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  max-width: 680px;
+  line-height: 1.75;
+  margin-bottom: 34px;
+}
+
+.prize-counter-wrap {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 12px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid var(--secondary);
+  border-radius: var(--radius-md);
+  padding: 12px 24px;
+  margin-bottom: 30px;
+}
+
+.prize-label {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.prize-amount {
+  font-family: var(--font-pixel);
+  font-size: 1.8rem;
+  color: var(--secondary);
+  text-shadow: 0 0 16px rgba(var(--secondary-rgb), 0.8);
+}
+
+/* ==========================================================================
+   RETRO MINI-ARCADE MODAL & CANVAS GAME
+   ========================================================================== */
+.arcade-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(4, 3, 10, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.arcade-modal-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.arcade-cabinet {
+  background: #090714;
+  border: 2px solid var(--primary);
+  box-shadow: 0 0 50px rgba(var(--primary-rgb), 0.45),
+              inset 0 0 20px rgba(0,0,0,0.9);
+  border-radius: var(--radius-lg);
+  width: 100%;
+  max-width: 640px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.arcade-cab-header {
+  background: linear-gradient(90deg, var(--bg-surface-2), #1d133f);
+  border-bottom: 2px solid var(--primary);
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-pixel);
+  font-size: 0.76rem;
+  color: var(--secondary);
+}
+
+.arcade-screen-frame {
+  position: relative;
+  background: #030208;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#mini-arcade-canvas {
+  width: 100%;
+  max-width: 580px;
+  height: 340px;
+  background: #06040d;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  display: block;
+}
+
+.arcade-controls-hud {
+  padding: 16px 20px;
+  background: var(--bg-surface);
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.arcade-touch-controls {
+  display: none;
+  gap: 12px;
+}
+
+@media (max-width: 768px) {
+  .arcade-touch-controls { display: flex; }
+}
+
+/* ==========================================================================
+   RETRO CYBERDECK TERMINAL DRAWER (CLI)
+   ========================================================================== */
+.cyber-terminal-drawer {
+  position: fixed;
+  bottom: 0;
+  right: 28px;
+  width: min(540px, calc(100vw - 32px));
+  height: 380px;
+  background: rgba(10, 6, 22, 0.95);
+  border: 1.5px solid var(--primary);
+  border-bottom: none;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.8),
+              0 0 25px rgba(var(--primary-rgb), 0.3);
+  z-index: 1002;
+  display: flex;
+  flex-direction: column;
+  transform: translateY(calc(100% - 40px));
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(12px);
+}
+
+.cyber-terminal-drawer.expanded {
+  transform: translateY(0);
+}
+
+.terminal-drawer-header {
+  height: 40px;
+  background: rgba(var(--primary-rgb), 0.12);
+  border-bottom: 1px solid var(--border);
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  user-select: none;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--primary);
+}
+
+.win-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.win-dot.red { background: #ff5f56; box-shadow: 0 0 6px rgba(255, 95, 86, 0.7); }
+.win-dot.yellow { background: #ffbd2e; box-shadow: 0 0 6px rgba(255, 189, 46, 0.7); }
+.win-dot.green { background: #27c93f; box-shadow: 0 0 6px rgba(39, 201, 63, 0.7); }
+
+.terminal-output-window {
+  flex-grow: 1;
+  padding: 14px 16px;
+  overflow-y: auto;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-main);
+  line-height: 1.5;
+}
+
+.term-line {
+  margin-bottom: 6px;
+  word-break: break-all;
+}
+
+.term-line.system { color: var(--accent); }
+.term-line.cmd { color: var(--primary); font-weight: 700; }
+.term-line.success { color: var(--success); }
+.term-line.warning { color: var(--secondary); }
+.term-line.dim { color: var(--text-dim); }
+
+.terminal-input-row {
+  display: flex;
+  align-items: center;
+  padding: 10px 16px;
+  border-top: 1px solid var(--border);
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.term-prompt-tag {
+  color: var(--primary);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  margin-right: 8px;
+  font-weight: 700;
+}
+
+#terminalCliInput {
+  flex-grow: 1;
+  background: none;
+  border: none;
+  outline: none;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: #fff;
+}
+
+/* ==========================================================================
+   EDUCATION & TIMELINE
+   ========================================================================== */
+.timeline-list {
+  position: relative;
+  padding-left: 48px;
+  max-width: 820px;
+}
+
+.timeline-list::before {
+  content: "";
+  position: absolute;
+  left: 12px;
+  top: 10px;
+  bottom: 10px;
+  width: 2px;
+  background: linear-gradient(var(--primary), var(--accent), transparent);
+}
+
+.timeline-entry {
+  position: relative;
+  padding-bottom: 50px;
+}
+
+.timeline-entry:last-child {
+  padding-bottom: 0;
+}
+
+.timeline-node-pin {
+  position: absolute;
+  left: -48px;
+  top: 4px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--bg-deep);
+  border: 2px solid var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 12px rgba(var(--primary-rgb), 0.6);
+}
+
+.timeline-node-pin::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--primary);
+}
+
+.timeline-period-badge {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--accent);
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+}
+
+.timeline-role-title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 6px;
+}
+
+.timeline-institution {
+  font-size: 0.96rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   CERTIFICATES
+   ========================================================================== */
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 24px;
+}
+
+.cert-retro-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  transition: all 0.25s ease;
+}
+
+.cert-retro-card:hover {
+  border-color: var(--primary);
+  background: rgba(var(--primary-rgb), 0.06);
+  transform: translateY(-3px);
+  box-shadow: var(--glow-intensity);
+}
+
+.cert-info h3 {
+  font-family: var(--font-tech);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 6px;
+}
+
+.cert-info p {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.cert-icon-link {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  font-size: 1.1rem;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.cert-retro-card:hover .cert-icon-link {
+  background: var(--primary);
+  color: var(--bg-deep);
+  border-color: var(--primary);
+  box-shadow: var(--glow-intensity);
+}
+
+/* ==========================================================================
+   CONTACT SECTION & COMMUNICATIONS CONSOLE
+   ========================================================================== */
+.contact-console-wrap {
+  text-align: center;
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+.contact-comms-hub {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin: 40px 0;
+}
+
+.comms-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 24px;
+  border-radius: var(--radius-sm);
+  background: rgba(var(--primary-rgb), 0.05);
+  border: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  color: var(--text-main);
+  transition: all 0.25s ease;
+}
+
+.comms-link-btn:hover {
+  border-color: var(--primary);
+  background: rgba(var(--primary-rgb), 0.15);
+  color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: var(--glow-intensity);
+}
+
+.copy-toast {
+  position: fixed;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%) translateY(30px);
+  background: var(--success);
+  color: #000;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 10px 22px;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 100000;
+}
+
+.copy-toast.visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 40px 0 60px;
+  background: rgba(6, 4, 15, 0.98);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* ==========================================================================
+   SCROLL REVEAL UTILITIES
+   ========================================================================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   RESPONSIVE QUERIES
+   ========================================================================== */
+@media (max-width: 992px) {
+  .about-grid { grid-template-columns: 1fr; }
+  .featured-showcase-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 820px) {
+  .top-telemetry-bar { font-size: 0.65rem; padding: 0 12px; }
+  .nav-links {
+    position: fixed;
+    top: 100px;
+    left: 0;
+    right: 0;
+    background: rgba(7, 5, 17, 0.98);
+    backdrop-filter: blur(16px);
+    flex-direction: column;
+    padding: 24px 32px;
+    gap: 18px;
+    border-bottom: 1px solid var(--border-strong);
+    transform: translateY(-130%);
+    opacity: 0;
+    transition: all 0.3s ease;
   }
-  .nav-links.open{transform:translateY(0);opacity:1;}
-  .nav-links a{padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.04);}
-  .nav-toggle{display:block;}
+  .nav-links.open {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  .mobile-toggle { display: block; }
+  .nav-terminal-trigger { display: none; }
+  .cyber-terminal-drawer { right: 8px; width: calc(100vw - 16px); }
 }
 
-/* ---------- HERO ---------- */
-.hero{
-  position:relative;min-height:100svh;display:flex;flex-direction:column;
-  align-items:center;justify-content:center;text-align:center;
-  padding:120px 24px 60px;overflow:hidden;
-}
-#hero-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;opacity:0.9;}
-.hero-inner{position:relative;z-index:2;max-width:820px;}
-.hero-eyebrow{
-  font-family:'JetBrains Mono',monospace;font-size:0.82rem;color:var(--accent);
-  letter-spacing:0.12em;text-transform:uppercase;margin-bottom:22px;
-  display:inline-flex;align-items:center;gap:10px;
-  opacity:0;animation:fadeUp .8s ease forwards .1s;
-}
-.hero-eyebrow::before{content:'';width:22px;height:1px;background:var(--accent);}
-.hero h1{
-  font-size:clamp(2.6rem,7vw,5.2rem);font-weight:700;line-height:1.02;
-  letter-spacing:-0.02em;margin-bottom:22px;
-  opacity:0;animation:fadeUp .9s ease forwards .25s;
-}
-.hero h1 .accent-word{color:var(--primary-light);font-style:italic;font-weight:500;}
-.hero-role{
-  font-size:clamp(1.05rem,2.2vw,1.35rem);color:var(--text-muted);
-  max-width:620px;margin:0 auto 40px;line-height:1.6;
-  opacity:0;animation:fadeUp .9s ease forwards .4s;
-}
-.hero-role .type-cursor{color:var(--primary-light);}
-.hero-actions{
-  display:flex;gap:16px;justify-content:center;flex-wrap:wrap;
-  opacity:0;animation:fadeUp .9s ease forwards .55s;
-}
-@keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
-
-.btn{
-  padding:14px 28px;border-radius:999px;font-size:0.92rem;font-weight:500;
-  cursor:pointer;border:1px solid transparent;transition:all .3s ease;
-  display:inline-flex;align-items:center;gap:8px;
-}
-.btn-primary{background:var(--primary);color:#04070d;font-weight:600;}
-.btn-primary:hover{background:var(--primary-light);transform:translateY(-2px);box-shadow:0 10px 30px -8px rgba(74,144,217,0.6);}
-.btn-ghost{border-color:var(--border-strong);color:var(--text);}
-.btn-ghost:hover{background:rgba(74,144,217,0.08);border-color:var(--primary-light);transform:translateY(-2px);}
-
-.scroll-hint{
-  position:absolute;bottom:36px;left:50%;transform:translateX(-50%);
-  display:flex;flex-direction:column;align-items:center;gap:8px;
-  font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--text-muted);
-  letter-spacing:0.1em;z-index:2;opacity:0;animation:fadeUp .9s ease forwards .8s;
-}
-.scroll-hint .line{width:1px;height:34px;background:linear-gradient(var(--primary-light),transparent);animation:scrollLine 1.8s ease-in-out infinite;}
-@keyframes scrollLine{0%{opacity:0;transform:scaleY(0);transform-origin:top;}50%{opacity:1;transform:scaleY(1);transform-origin:top;}100%{opacity:0;transform:scaleY(1);transform-origin:bottom;}}
-
-/* ---------- SECTION HEADINGS ---------- */
-section{padding:120px 0;position:relative;}
-.section-head{margin-bottom:56px;}
-.section-num{
-  font-family:'JetBrains Mono',monospace;font-size:0.78rem;color:var(--accent);
-  letter-spacing:0.1em;margin-bottom:14px;display:block;
-}
-.section-title{font-size:clamp(1.9rem,4vw,2.7rem);font-weight:600;letter-spacing:-0.015em;}
-.section-sub{color:var(--text-muted);margin-top:14px;max-width:560px;font-size:1rem;line-height:1.6;}
-
-.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease, transform .8s ease;}
-.reveal.visible{opacity:1;transform:translateY(0);}
-
-/* ---------- ABOUT ---------- */
-.about-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:64px;align-items:start;}
-.about-text p{color:var(--text-muted);font-size:1.05rem;line-height:1.85;margin-bottom:18px;}
-.about-text strong{color:var(--text);font-weight:600;}
-.avatar-slot{
-  width:100%;aspect-ratio:1;border-radius:24px;
-  background:linear-gradient(155deg,var(--surface),var(--surface-2));
-  border:1px solid var(--border);
-  display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;
-}
-.avatar-slot::before{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(circle at 30% 20%, rgba(74,144,217,0.25), transparent 60%);
-}
-.avatar-initials{
-  font-family:'Space Grotesk',sans-serif;font-size:4.5rem;font-weight:700;
-  color:var(--primary-light);opacity:0.85;letter-spacing:0.02em;position:relative;z-index:1;
-}
-.avatar-hint{
-  position:absolute;bottom:16px;left:16px;right:16px;
-  font-family:'JetBrains Mono',monospace;font-size:0.68rem;color:var(--text-muted);
-  text-align:center;letter-spacing:0.03em;z-index:1;
-}
-.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:40px;}
-.stat{border-top:1px solid var(--border);padding-top:16px;}
-.stat-num{font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:700;color:var(--primary-light);}
-.stat-label{font-size:0.8rem;color:var(--text-muted);margin-top:4px;}
-
-@media(max-width:860px){
-  .about-grid{grid-template-columns:1fr;}
-  .avatar-slot{max-width:260px;margin:0 auto;}
+@media (max-width: 600px) {
+  section { padding: 90px 0; }
+  .trophy-arena-card { padding: 36px 22px; }
+  .pilot-spec-sheet { grid-template-columns: 1fr; }
 }
 
-/* ---------- SKILLS ---------- */
-.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:28px;}
-.skill-card{
-  background:var(--surface);border:1px solid var(--border);border-radius:18px;
-  padding:26px;transition:border-color .3s ease, transform .3s ease;
-}
-.skill-card:hover{border-color:var(--border-strong);transform:translateY(-4px);}
-.skill-cat{
-  font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--accent);
-  letter-spacing:0.08em;text-transform:uppercase;margin-bottom:16px;
-}
-.tag-list{display:flex;flex-wrap:wrap;gap:8px;}
-.tag{
-  font-size:0.82rem;padding:6px 12px;border-radius:8px;
-  background:rgba(74,144,217,0.08);border:1px solid var(--border);
-  color:var(--text-muted);transition:all .25s ease;
-}
-.tag:hover{color:var(--text);border-color:var(--primary-light);background:rgba(74,144,217,0.16);}
-
-/* ---------- PROJECTS ---------- */
-.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:26px;}
-.project-card{
-  background:linear-gradient(155deg,var(--surface),var(--bg-alt));
-  border:1px solid var(--border);border-radius:20px;padding:30px;
-  position:relative;overflow:hidden;transition:border-color .35s ease, transform .1s ease;
-  transform-style:preserve-3d;will-change:transform;
-}
-.project-card::before{
-  content:'';position:absolute;inset:0;opacity:0;transition:opacity .4s ease;
-  background:radial-gradient(500px circle at var(--mx,50%) var(--my,50%), rgba(74,144,217,0.14), transparent 60%);
-  pointer-events:none;
-}
-.project-card:hover::before{opacity:1;}
-.project-card:hover{border-color:var(--border-strong);}
-.project-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:18px;}
-.project-index{font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--text-muted);}
-.project-links{display:flex;gap:12px;}
-.project-links a{
-  width:34px;height:34px;border-radius:50%;border:1px solid var(--border);
-  display:flex;align-items:center;justify-content:center;font-size:0.85rem;
-  color:var(--text-muted);transition:all .25s ease;
-}
-.project-links a:hover{color:var(--bg);background:var(--primary-light);border-color:var(--primary-light);transform:scale(1.08);}
-.project-title{font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:600;margin-bottom:10px;}
-.project-desc{color:var(--text-muted);font-size:0.94rem;line-height:1.65;margin-bottom:20px;}
-.project-tags{display:flex;flex-wrap:wrap;gap:7px;}
-.project-tags span{
-  font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--primary-light);
-  padding:4px 10px;border-radius:6px;background:rgba(74,144,217,0.08);
-}
-
-/* ---------- ACHIEVEMENT ---------- */
-.achievement{
-  border:1px solid var(--border-strong);border-radius:26px;
-  padding:56px;position:relative;overflow:hidden;
-  background:linear-gradient(135deg, rgba(74,144,217,0.1), rgba(99,230,232,0.04));
-}
-.achievement::after{
-  content:'';position:absolute;top:-60%;right:-10%;width:420px;height:420px;border-radius:50%;
-  background:radial-gradient(circle, rgba(74,144,217,0.25), transparent 70%);
-  filter:blur(10px);pointer-events:none;
-}
-.achv-badge{
-  font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--accent);
-  letter-spacing:0.1em;text-transform:uppercase;margin-bottom:18px;
-  display:inline-block;border:1px solid var(--border-strong);padding:6px 14px;border-radius:999px;
-}
-.achv-title{font-size:clamp(1.6rem,3.4vw,2.3rem);font-weight:600;max-width:640px;line-height:1.3;margin-bottom:18px;}
-.achv-title strong{color:var(--primary-light);}
-.achv-desc{color:var(--text-muted);max-width:560px;line-height:1.7;margin-bottom:26px;}
-
-/* ---------- CERTIFICATES ---------- */
-.cert-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px;}
-.cert-card{
-  border:1px solid var(--border);border-radius:16px;padding:26px;
-  display:flex;justify-content:space-between;align-items:center;gap:20px;
-  transition:border-color .3s ease, background .3s ease;
-}
-.cert-card:hover{border-color:var(--border-strong);background:rgba(74,144,217,0.05);}
-.cert-name{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1.05rem;margin-bottom:6px;}
-.cert-meta{font-size:0.85rem;color:var(--text-muted);}
-.cert-arrow{
-  width:38px;height:38px;border-radius:50%;border:1px solid var(--border-strong);
-  display:flex;align-items:center;justify-content:center;flex-shrink:0;
-  transition:all .25s ease;
-}
-.cert-card:hover .cert-arrow{background:var(--primary-light);color:var(--bg);transform:rotate(45deg);}
-
-/* ---------- EDUCATION TIMELINE ---------- */
-.timeline{position:relative;padding-left:40px;}
-.timeline::before{content:'';position:absolute;left:6px;top:6px;bottom:6px;width:1px;background:linear-gradient(var(--primary),transparent);}
-.timeline-item{position:relative;padding-bottom:44px;}
-.timeline-item:last-child{padding-bottom:0;}
-.timeline-item::before{
-  content:'';position:absolute;left:-40px;top:4px;width:13px;height:13px;border-radius:50%;
-  background:var(--bg);border:2px solid var(--primary-light);
-}
-.tl-period{font-family:'JetBrains Mono',monospace;font-size:0.78rem;color:var(--accent);margin-bottom:6px;}
-.tl-title{font-family:'Space Grotesk',sans-serif;font-size:1.2rem;font-weight:600;margin-bottom:4px;}
-.tl-place{color:var(--text-muted);font-size:0.92rem;}
-
-/* ---------- CONTACT / FOOTER ---------- */
-.contact-section{text-align:center;}
-.contact-title{font-size:clamp(2rem,6vw,3.6rem);font-weight:700;letter-spacing:-0.02em;margin-bottom:22px;}
-.contact-title .accent-word{color:var(--primary-light);font-style:italic;font-weight:500;}
-.contact-sub{color:var(--text-muted);max-width:480px;margin:0 auto 36px;line-height:1.7;}
-.contact-links{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-bottom:70px;}
-.contact-links a{
-  padding:12px 22px;border:1px solid var(--border);border-radius:999px;font-size:0.88rem;
-  color:var(--text-muted);transition:all .25s ease;
-}
-.contact-links a:hover{color:var(--text);border-color:var(--primary-light);background:rgba(74,144,217,0.06);}
-
-footer{border-top:1px solid var(--border);padding:30px 0;}
-.footer-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;font-size:0.82rem;color:var(--text-muted);}
-.footer-row .mono{color:var(--text-muted);}
-
-@media(max-width:600px){
-  section{padding:80px 0;}
-  .achievement{padding:34px 26px;}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 </style>
 </head>
 <body>
 
-<nav id="navbar">
-  <div class="nav-logo"><span class="dot"></span>Aaryan Bista</div>
-  <div class="nav-links" id="navLinks">
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#achievement">Achievement</a>
-    <a href="#education">Education</a>
-    <a href="#contact">Contact</a>
+<!-- CRT Monitor Scanline & Curvature Filter -->
+<div class="crt-overlay active" id="crtOverlay"></div>
+
+<!-- Background Cyber Grid & Vignettes -->
+<div class="cyber-bg-grid"></div>
+<div class="cyber-vignette"></div>
+
+<!-- Top Telemetry & Hardware Status Bar -->
+<header class="top-telemetry-bar" id="topTelemetry">
+  <div class="telemetry-left">
+    <span class="live-indicator"><span class="live-dot"></span>SYS_OK</span>
+    <span>CPU: 3.80GHz</span>
+    <span>LOC: KATHMANDU [27.71°N]</span>
+    <span id="kathmanduClock">00:00:00 NST</span>
   </div>
-  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
+  <div class="telemetry-right">
+    <!-- CRT Toggle -->
+    <button class="hud-btn active" id="crtToggleBtn" title="Toggle CRT scanlines & curvature">
+      <span>CRT</span> [ON]
+    </button>
+    <!-- Web Audio Synthesizer SFX Toggle -->
+    <button class="hud-btn" id="sfxToggleBtn" title="Toggle retro 8-bit sound effects">
+      <span class="sound-bars">
+        <span class="sound-bar"></span>
+        <span class="sound-bar"></span>
+        <span class="sound-bar"></span>
+      </span>
+      <span>SFX: <span id="sfxStatus">OFF</span></span>
+    </button>
+    <!-- Theme Switcher -->
+    <button class="hud-btn" id="themeSwitchBtn" title="Cycle retro color palettes">
+      <span id="themeNameTag">THEME: CYBER</span>
+    </button>
+  </div>
+</header>
+
+<!-- Primary Navigation Bar -->
+<nav id="mainNav">
+  <a href="#" class="nav-brand">
+    <span class="brand-bracket">[</span>AARYAN.DEV<span class="brand-bracket">]</span>
+  </a>
+  <div class="nav-links" id="navLinks">
+    <a href="#about">01 // Dossier</a>
+    <a href="#skills">02 // Hardware</a>
+    <a href="#projects">03 // Vault</a>
+    <a href="#trophy">04 // Grand Prix</a>
+    <a href="#education">05 // Timeline</a>
+    <a href="#contact">06 // Comms</a>
+  </div>
+  <div class="nav-right-actions">
+    <button class="nav-terminal-trigger" id="openCliBtn">
+      <span>&gt;_</span> CLI CONSOLE
+    </button>
+    <button class="hud-btn" id="launchArcadeBtn" style="color:var(--secondary);border-color:var(--secondary)">
+      ⚡ MINI-ARCADE
+    </button>
+    <button class="mobile-toggle" id="mobileMenuToggle" aria-label="Toggle navigation menu">☰</button>
+  </div>
 </nav>
 
-<!-- ---------- HERO ---------- -->
-<section class="hero">
-  <canvas id="hero-canvas"></canvas>
-  <div class="hero-inner">
-    <span class="hero-eyebrow">Kathmandu, Nepal — Open to opportunities</span>
-    <h1>Aaryan Bista<br><span class="accent-word">builds systems that see &amp; respond.</span></h1>
-    <p class="hero-role" id="typedRole">Software engineer<span class="type-cursor">|</span></p>
+<!-- ==========================================================================
+     HERO SECTION // 3D SYNTH HORIZON CANVAS
+     ========================================================================== -->
+<section class="hero" id="hero">
+  <canvas id="hero-synth-canvas"></canvas>
+  <div class="hero-content">
+    <div class="hero-hardware-tag">
+      <span>● KATHMANDU, NEPAL</span>
+      <span>//</span>
+      <span>OPEN TO WORLDWIDE OPPORTUNITIES</span>
+    </div>
+    
+    <h1 class="hero-title">
+      AARYAN BISTA<br>
+      <span class="glitch-word">ARCHITECTING SYSTEMS</span><br>
+      THAT SEE &amp; REASON
+    </h1>
+    
+    <div class="hero-terminal-pill">
+      <span class="terminal-prompt">root@aaryan-deck:~#</span>
+      <span id="heroTypedText">Software Engineer</span>
+      <span class="terminal-cursor"></span>
+    </div>
+
+    <p class="hero-subtitle">
+      BS CSIT Scholar at St. Xavier's College. SXC Sandbox Hackathon 2.0 Champion.
+      Building retrieval-augmented AI backends, real-time computer vision engines, and interactive worlds.
+    </p>
+
     <div class="hero-actions">
-      <a href="#projects" class="btn btn-primary">View Projects</a>
-      <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+      <a href="#projects" class="btn-retro btn-retro-primary">
+        <span>▶ EXPLORE PROJECTS</span>
+      </a>
+      <button class="btn-retro btn-retro-accent" id="heroPlayArcadeBtn">
+        <span>⚡ PLAY MINI-ARCADE</span>
+      </button>
+      <a href="#contact" class="btn-retro btn-retro-outline">
+        <span>✉ ESTABLISH COMMS</span>
+      </a>
     </div>
   </div>
-  <div class="scroll-hint"><span>SCROLL</span><span class="line"></span></div>
+
+  <div class="scroll-indicator">
+    <span>INITIALIZE_SCROLL</span>
+    <span class="scroll-down-arrow"></span>
+  </div>
 </section>
 
-<!-- ---------- ABOUT ---------- -->
+<!-- ==========================================================================
+     RETRO MARQUEE BAND
+     ========================================================================== -->
+<div class="retro-marquee-wrap">
+  <div class="retro-marquee">
+    <span class="marquee-item">✦ SOFTWARE ENGINEER <span class="marquee-symbol">■</span></span>
+    <span class="marquee-item">FASTAPI &amp; GROQ RAG BACKENDS <span class="marquee-symbol">■</span></span>
+    <span class="marquee-item">COMPUTER VISION &amp; MEDIAPIPE <span class="marquee-symbol">■</span></span>
+    <span class="marquee-item">1ST PLACE SXC HACKATHON 2.0 CHAMPION <span class="marquee-symbol">■</span></span>
+    <span class="marquee-item">UNITY &amp; UNREAL 3D ENGINE <span class="marquee-symbol">■</span></span>
+    <span class="marquee-item">ST. XAVIER'S COLLEGE CSIT '26 <span class="marquee-symbol">■</span></span>
+    <span class="marquee-item">PYTHON · C# · LARAVEL · QDRANT · REDIS <span class="marquee-symbol">■</span></span>
+    
+    <!-- Repeat for seamless continuous loop -->
+    <span class="marquee-item">✦ SOFTWARE ENGINEER <span class="marquee-symbol">■</span></span>
+    <span class="marquee-item">FASTAPI &amp; GROQ RAG BACKENDS <span class="marquee-symbol">■</span></span>
+    <span class="marquee-item">COMPUTER VISION &amp; MEDIAPIPE <span class="marquee-symbol">■</span></span>
+    <span class="marquee-item">1ST PLACE SXC HACKATHON 2.0 CHAMPION <span class="marquee-symbol">■</span></span>
+    <span class="marquee-item">UNITY &amp; UNREAL 3D ENGINE <span class="marquee-symbol">■</span></span>
+    <span class="marquee-item">ST. XAVIER'S COLLEGE CSIT '26 <span class="marquee-symbol">■</span></span>
+    <span class="marquee-item">PYTHON · C# · LARAVEL · QDRANT · REDIS <span class="marquee-symbol">■</span></span>
+  </div>
+</div>
+
+<!-- ==========================================================================
+     ABOUT // PILOT DOSSIER & CRT OSCILLOSCOPE MONITOR
+     ========================================================================== -->
 <section id="about">
   <div class="container">
-    <div class="section-head reveal">
-      <span class="section-num">01 / About</span>
-      <h2 class="section-title">A builder at the intersection<br>of AI, vision &amp; code.</h2>
+    <div class="section-header reveal">
+      <span class="section-tag">01 // Dossier &amp; Architecture</span>
+      <h2 class="section-title">
+        The Mind Behind <span class="neon-span">The Machine.</span>
+      </h2>
+      <p class="section-desc">
+        A builder living at the intersection of neural retrieval, real-time spatial vision, and robust systems engineering.
+      </p>
     </div>
+
     <div class="about-grid">
-      <div class="about-text reveal">
-        <p>I'm a <strong>BS CSIT</strong> student at <strong>St. Xavier's College, Tribhuvan University</strong>, based in Kathmandu, Nepal. I like taking systems apart to see how they think — whether that's a retrieval pipeline answering questions over private documents, a vision model reading hand gestures, or a small game world responding to a click.</p>
-        <p>Most recently, I placed <strong>1st at the SXC Sandbox Hackathon 2.0</strong>, building <strong>VisionMate</strong>, an accessibility-focused computer vision project, in a room full of sharp competition. Outside of hackathons, I ship full-stack apps, offline ML tools, and the occasional Unity game just to keep things fun.</p>
-        <div class="stat-row">
-          <div class="stat"><div class="stat-num">7+</div><div class="stat-label">Shipped projects</div></div>
-          <div class="stat"><div class="stat-num">Rs 75K</div><div class="stat-label">Hackathon prize</div></div>
-          <div class="stat"><div class="stat-num">2026</div><div class="stat-label">Graduating</div></div>
+      <!-- Left Column: Biography & Specs -->
+      <div class="pilot-dossier-text reveal">
+        <p>
+          I am a <strong>BS CSIT</strong> scholar at <strong>St. Xavier's College, Tribhuvan University</strong> in Kathmandu, Nepal. My work centers on demystifying complex technical machinery — from orchestrating ultra-low-latency semantic retrieval pipelines over private corpora to building assistive computer vision systems that interpret physical human gestures in real-time.
+        </p>
+        <p>
+          Recently, I took <strong>1st Place at the SXC Sandbox Hackathon 2.0</strong>, conceiving and executing <strong>VisionMate</strong> — an accessibility-driven computer vision utility built under intense hackathon time constraints. When I'm not training vector indexes or deploying backends, I build interactive Unity worlds and offline desktop utilities.
+        </p>
+
+        <!-- Cyber Hardware Spec Sheet -->
+        <div class="pilot-spec-sheet">
+          <div class="spec-entry">
+            <div class="spec-key">// AFFILIATION</div>
+            <div class="spec-val">St. Xavier's College (TU)</div>
+          </div>
+          <div class="spec-entry">
+            <div class="spec-key">// SPECIALTY</div>
+            <div class="spec-val">RAG, AI &amp; Spatial CV</div>
+          </div>
+          <div class="spec-entry">
+            <div class="spec-key">// COORDINATES</div>
+            <div class="spec-val">Kathmandu Valley, Nepal</div>
+          </div>
+          <div class="spec-entry">
+            <div class="spec-key">// OPERATIONAL STATUS</div>
+            <div class="spec-val" style="color:var(--success)">Available for Hire</div>
+          </div>
+        </div>
+
+        <!-- Telemetry Stats -->
+        <div class="dossier-stats-row">
+          <div class="dossier-stat-box">
+            <div class="dossier-stat-num">7+</div>
+            <div class="dossier-stat-label">Shipped Systems</div>
+          </div>
+          <div class="dossier-stat-box">
+            <div class="dossier-stat-num" style="color:var(--secondary)">Rs 75K</div>
+            <div class="dossier-stat-label">Hackathon Prize</div>
+          </div>
+          <div class="dossier-stat-box">
+            <div class="dossier-stat-num" style="color:var(--accent)">2026</div>
+            <div class="dossier-stat-label">BS CSIT Grad</div>
+          </div>
         </div>
       </div>
-      <div class="avatar-slot reveal">
-        <span class="avatar-initials">AB</span>
-        <span class="avatar-hint">// photo placeholder — drop yours in later</span>
+
+      <!-- Right Column: Pure Code Retro CRT Oscilloscope Monitor -->
+      <div class="pilot-crt-terminal-box reveal">
+        <div class="crt-terminal-top">
+          <span>[TERMINAL_CORE // AB-21323]</span>
+          <span style="color:var(--success)">● RUNNING</span>
+        </div>
+        <div class="crt-screen-bezel">
+          <!-- Retro ASCII Identity Art -->
+          <pre class="pilot-ascii-art">
+ █████╗  █████╗ ██████╗ ██╗   ██╗ █████╗ ███╗   ██╗
+██╔══██╗██╔══██╗██╔══██╗╚██╗ ██╔╝██╔══██╗████╗  ██║
+███████║███████║██████╔╝ ╚████╔╝ ███████║██╔██╗ ██║
+██╔══██║██╔══██║██╔══██╗  ╚██╔╝  ██╔══██║██║╚██╗██║
+██║  ██║██║  ██║██║  ██║   ██║   ██║  ██║██║ ╚████║
+╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝
+          </pre>
+
+          <!-- Interactive Live Oscilloscope Waveform -->
+          <canvas id="pilot-scope-canvas"></canvas>
+
+          <div class="pilot-crt-telemetry-list">
+            <span>&gt; <strong>SYS_ARCH:</strong> NEURAL &amp; SPATIAL HYBRID</span>
+            <span>&gt; <strong>CORE_LANG:</strong> PYTHON // C# // LARAVEL</span>
+            <span>&gt; <strong>LOCATION:</strong> KATHMANDU, NEPAL [27.71° N]</span>
+            <span>&gt; <strong>UPTIME:</strong> 99.98% // ALL FREQUENCIES CLEAR</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ---------- SKILLS ---------- -->
+<!-- ==========================================================================
+     SKILLS // HARDWARE MODULES & CARTRIDGE RACK
+     ========================================================================== -->
 <section id="skills">
   <div class="container">
-    <div class="section-head reveal">
-      <span class="section-num">02 / Skills</span>
-      <h2 class="section-title">The stack I reach for.</h2>
-      <p class="section-sub">Languages, frameworks, and tools across web, AI, and game development.</p>
+    <div class="section-header reveal">
+      <span class="section-tag">02 // Hardware Core</span>
+      <h2 class="section-title">
+        The Stack In My <span class="neon-span">Cyberdeck.</span>
+      </h2>
+      <p class="section-desc">
+        Modular capabilities spanning artificial intelligence, low-level algorithms, scalable backends, and game engines.
+      </p>
     </div>
-    <div class="skills-grid">
-      <div class="skill-card reveal">
-        <div class="skill-cat">Languages</div>
-        <div class="tag-list">
-          <span class="tag">Python</span><span class="tag">C#</span><span class="tag">Java</span>
-          <span class="tag">C</span><span class="tag">C++</span><span class="tag">SQL</span>
-          <span class="tag">JavaScript</span><span class="tag">HTML</span><span class="tag">CSS</span>
+
+    <div class="skills-rack">
+      <!-- Module 1: AI & Computer Vision -->
+      <div class="skill-cartridge reveal">
+        <div class="skill-module-head">
+          <div class="skill-module-title">
+            <span>[MOD 01]</span> AI &amp; Spatial Vision
+          </div>
+          <div class="skill-pins">
+            <span class="skill-pin"></span><span class="skill-pin"></span><span class="skill-pin"></span>
+          </div>
+        </div>
+        <div class="skill-tags-grid">
+          <span class="skill-pill"><span class="pill-dot"></span>OpenCV</span>
+          <span class="skill-pill"><span class="pill-dot"></span>MediaPipe</span>
+          <span class="skill-pill"><span class="pill-dot"></span>Whisper (OpenAI)</span>
+          <span class="skill-pill"><span class="pill-dot"></span>Groq LLM</span>
+          <span class="skill-pill"><span class="pill-dot"></span>Qdrant Vector DB</span>
+          <span class="skill-pill"><span class="pill-dot"></span>Redis Semantic Cache</span>
         </div>
       </div>
-      <div class="skill-card reveal">
-        <div class="skill-cat">Web &amp; Backend</div>
-        <div class="tag-list">
-          <span class="tag">Django</span><span class="tag">FastAPI</span><span class="tag">Laravel</span>
-          <span class="tag">WordPress</span><span class="tag">WooCommerce</span><span class="tag">MySQL</span>
+
+      <!-- Module 2: Languages -->
+      <div class="skill-cartridge reveal">
+        <div class="skill-module-head">
+          <div class="skill-module-title">
+            <span>[MOD 02]</span> Core Languages
+          </div>
+          <div class="skill-pins">
+            <span class="skill-pin"></span><span class="skill-pin"></span><span class="skill-pin"></span>
+          </div>
+        </div>
+        <div class="skill-tags-grid">
+          <span class="skill-pill"><span class="pill-dot"></span>Python</span>
+          <span class="skill-pill"><span class="pill-dot"></span>C#</span>
+          <span class="skill-pill"><span class="pill-dot"></span>Java</span>
+          <span class="skill-pill"><span class="pill-dot"></span>C / C++</span>
+          <span class="skill-pill"><span class="pill-dot"></span>SQL (MySQL)</span>
+          <span class="skill-pill"><span class="pill-dot"></span>JavaScript</span>
+          <span class="skill-pill"><span class="pill-dot"></span>HTML5 / CSS3</span>
         </div>
       </div>
-      <div class="skill-card reveal">
-        <div class="skill-cat">AI &amp; Computer Vision</div>
-        <div class="tag-list">
-          <span class="tag">OpenCV</span><span class="tag">MediaPipe</span><span class="tag">Whisper</span>
-          <span class="tag">Groq LLM</span><span class="tag">Qdrant</span><span class="tag">Redis</span>
+
+      <!-- Module 3: Web & Backends -->
+      <div class="skill-cartridge reveal">
+        <div class="skill-module-head">
+          <div class="skill-module-title">
+            <span>[MOD 03]</span> Web &amp; Backends
+          </div>
+          <div class="skill-pins">
+            <span class="skill-pin"></span><span class="skill-pin"></span><span class="skill-pin"></span>
+          </div>
+        </div>
+        <div class="skill-tags-grid">
+          <span class="skill-pill"><span class="pill-dot"></span>FastAPI</span>
+          <span class="skill-pill"><span class="pill-dot"></span>Django</span>
+          <span class="skill-pill"><span class="pill-dot"></span>Laravel (PHP)</span>
+          <span class="skill-pill"><span class="pill-dot"></span>RESTful APIs</span>
+          <span class="skill-pill"><span class="pill-dot"></span>WordPress</span>
+          <span class="skill-pill"><span class="pill-dot"></span>WooCommerce</span>
         </div>
       </div>
-      <div class="skill-card reveal">
-        <div class="skill-cat">Game Development</div>
-        <div class="tag-list">
-          <span class="tag">Unity</span><span class="tag">Unreal Engine 5</span>
+
+      <!-- Module 4: Game Dev & Graphics -->
+      <div class="skill-cartridge reveal">
+        <div class="skill-module-head">
+          <div class="skill-module-title">
+            <span>[MOD 04]</span> Game Engineering
+          </div>
+          <div class="skill-pins">
+            <span class="skill-pin"></span><span class="skill-pin"></span><span class="skill-pin"></span>
+          </div>
+        </div>
+        <div class="skill-tags-grid">
+          <span class="skill-pill"><span class="pill-dot"></span>Unity Engine</span>
+          <span class="skill-pill"><span class="pill-dot"></span>Unreal Engine 5</span>
+          <span class="skill-pill"><span class="pill-dot"></span>C# Gameplay Physics</span>
+          <span class="skill-pill"><span class="pill-dot"></span>WebGL Game Deployment</span>
         </div>
       </div>
-      <div class="skill-card reveal">
-        <div class="skill-cat">Tools &amp; Platforms</div>
-        <div class="tag-list">
-          <span class="tag">Git</span><span class="tag">AWS</span><span class="tag">Linux</span>
+
+      <!-- Module 5: Platforms & Infrastructure -->
+      <div class="skill-cartridge reveal">
+        <div class="skill-module-head">
+          <div class="skill-module-title">
+            <span>[MOD 05]</span> DevOps &amp; Cloud
+          </div>
+          <div class="skill-pins">
+            <span class="skill-pin"></span><span class="skill-pin"></span><span class="skill-pin"></span>
+          </div>
+        </div>
+        <div class="skill-tags-grid">
+          <span class="skill-pill"><span class="pill-dot"></span>Git &amp; GitHub</span>
+          <span class="skill-pill"><span class="pill-dot"></span>AWS Cloud</span>
+          <span class="skill-pill"><span class="pill-dot"></span>Linux (Ubuntu)</span>
+          <span class="skill-pill"><span class="pill-dot"></span>PyQt Desktop GUI</span>
         </div>
       </div>
-      <div class="skill-card reveal">
-        <div class="skill-cat">Design</div>
-        <div class="tag-list">
-          <span class="tag">Figma</span><span class="tag">Canva</span>
+
+      <!-- Module 6: UI & Visual Systems -->
+      <div class="skill-cartridge reveal">
+        <div class="skill-module-head">
+          <div class="skill-module-title">
+            <span>[MOD 06]</span> UI &amp; Creative Tooling
+          </div>
+          <div class="skill-pins">
+            <span class="skill-pin"></span><span class="skill-pin"></span><span class="skill-pin"></span>
+          </div>
+        </div>
+        <div class="skill-tags-grid">
+          <span class="skill-pill"><span class="pill-dot"></span>Figma Design</span>
+          <span class="skill-pill"><span class="pill-dot"></span>Canva</span>
+          <span class="skill-pill"><span class="pill-dot"></span>Retro Pixel Aesthetics</span>
+          <span class="skill-pill"><span class="pill-dot"></span>Wireframe Prototyping</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ---------- PROJECTS ---------- -->
+<!-- ==========================================================================
+     PROJECTS // ARCADE VAULT
+     ========================================================================== -->
 <section id="projects">
   <div class="container">
-    <div class="section-head reveal">
-      <span class="section-num">03 / Projects</span>
-      <h2 class="section-title">Things I've built.</h2>
-      <p class="section-sub">A mix of AI backends, computer vision tools, full-stack apps, and games.</p>
+    <div class="section-header reveal">
+      <span class="section-tag">03 // The Vault</span>
+      <h2 class="section-title">
+        Featured <span class="neon-span">Constructions.</span>
+      </h2>
+      <p class="section-desc">
+        Engineered AI services, computer vision utilities, full-stack ecommerce systems, and playable games.
+      </p>
     </div>
-    <div class="projects-grid" id="projectsGrid"></div>
-  </div>
-</section>
 
-<!-- ---------- ACHIEVEMENT ---------- -->
-<section id="achievement">
-  <div class="container">
-    <div class="achievement reveal">
-      <span class="achv-badge">🏆 1st Place</span>
-      <h2 class="achv-title">Winner, <strong>SXC Sandbox Hackathon 2.0</strong> — built VisionMate and took home Rs. 75,000.</h2>
-      <p class="achv-desc">VisionMate is a computer-vision accessibility project built with Python, OpenCV, and MediaPipe. Under hackathon time pressure, it stood out enough to take first place.</p>
-      <a href="https://drive.google.com/file/d/1v-lYFPzZBb4hnUvafse65AVpPue2SI9M/view?usp=drive_link" target="_blank" rel="noopener" class="btn btn-primary">View Certificate</a>
+    <!-- Filter Buttons -->
+    <div class="projects-filter-bar reveal">
+      <button class="filter-btn active" data-filter="all">All Modules</button>
+      <button class="filter-btn" data-filter="ai">AI &amp; Vision</button>
+      <button class="filter-btn" data-filter="web">Web &amp; Backend</button>
+      <button class="filter-btn" data-filter="games">Game Dev</button>
     </div>
-  </div>
-</section>
 
-<!-- ---------- CERTIFICATES ---------- -->
-<section id="certificates">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="section-num">04 / Certificates</span>
-      <h2 class="section-title">Continuous learning.</h2>
-    </div>
-    <div class="cert-list">
-      <a href="https://coursera.org/verify/professional-cert/G30LX0LHKJZD" target="_blank" rel="noopener" class="cert-card reveal">
-        <div>
-          <div class="cert-name">Google AI Professional Certificate</div>
-          <div class="cert-meta">Coursera · Jul 2026</div>
+    <!-- Featured Showcases (Pure Code Canvas Visuals) -->
+    <div class="featured-showcase-grid">
+      <!-- Featured 1: VisionMate (Interactive Hand Gesture & Edge Detection Canvas) -->
+      <div class="featured-project-card reveal" data-category="ai">
+        <div class="featured-canvas-box" id="visionmateCardBox">
+          <canvas id="visionmate-hud-canvas" class="interactive-project-canvas" width="600" height="340"></canvas>
+          <div class="featured-badge-pill gold">
+            🏆 1ST PLACE WINNER // HACKATHON 2.0
+          </div>
+          <span class="canvas-interactive-hint">INTERACTIVE: HOVER TO TRACK GESTURE</span>
         </div>
-        <div class="cert-arrow">↗</div>
-      </a>
-      <div class="cert-card reveal">
-        <div>
-          <div class="cert-name">Associate Python Developer</div>
-          <div class="cert-meta">DataCamp · May 2026</div>
+        <div class="featured-content-box">
+          <h3 class="featured-title">VisionMate — Spatial Accessibility Vision</h3>
+          <p class="featured-desc">
+            An award-winning computer vision system conceived and programmed under hackathon pressure. Employs real-time OpenCV edge processing and MediaPipe neural landmark detection to provide accessible spatial awareness and human gesture interpretation.
+          </p>
+          <div class="featured-tags-row">
+            <span class="featured-tag">Python</span>
+            <span class="featured-tag">OpenCV</span>
+            <span class="featured-tag">MediaPipe</span>
+            <span class="featured-tag">Gesture Tracking</span>
+            <span class="featured-tag">Accessibility</span>
+          </div>
+          <div class="featured-actions-row">
+            <a href="https://github.com/Aaryan21323/VisionMate" target="_blank" rel="noopener" class="btn-retro btn-retro-primary">
+              <span>⌥ SOURCE CODE</span>
+            </a>
+            <a href="https://drive.google.com/file/d/1v-lYFPzZBb4hnUvafse65AVpPue2SI9M/view?usp=drive_link" target="_blank" rel="noopener" class="btn-retro btn-retro-outline">
+              <span>★ CERTIFICATE</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Featured 2: Conversational RAG Engine (Interactive Vector Network Canvas) -->
+      <div class="featured-project-card reveal" data-category="ai">
+        <div class="featured-canvas-box" id="ragCardBox">
+          <canvas id="rag-matrix-canvas" class="interactive-project-canvas" width="600" height="340"></canvas>
+          <div class="featured-badge-pill">
+            ⚡ HIGH-SPEED LLM RETRIEVAL
+          </div>
+          <span class="canvas-interactive-hint">LIVE: VECTOR EMBEDDING PIPELINE</span>
+        </div>
+        <div class="featured-content-box">
+          <h3 class="featured-title">Custom Conversational RAG Engine</h3>
+          <p class="featured-desc">
+            High-performance Retrieval-Augmented Generation backend. Combines asynchronous FastAPI, lightning-fast Groq LPU inference, Qdrant vector database similarity indexing, and Redis low-latency memory caching for contextual conversations over private knowledge bases.
+          </p>
+          <div class="featured-tags-row">
+            <span class="featured-tag">FastAPI</span>
+            <span class="featured-tag">Groq LLM</span>
+            <span class="featured-tag">Qdrant Vector DB</span>
+            <span class="featured-tag">Redis Cache</span>
+            <span class="featured-tag">Python</span>
+          </div>
+          <div class="featured-actions-row">
+            <a href="https://github.com/Aaryan21323/rag-backend-groq-qdrant" target="_blank" rel="noopener" class="btn-retro btn-retro-primary">
+              <span>⌥ SOURCE CODE</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Standard Projects Grid -->
+    <div class="projects-standard-grid" id="standardProjectsContainer">
+      <!-- Project: Auto Subtitle Generator -->
+      <div class="standard-project-card reveal" data-category="ai">
+        <div class="card-top-meta">
+          <span class="card-index">03 // DESKTOP ML</span>
+          <div class="card-quick-links">
+            <a href="https://github.com/Aaryan21323/AutoSubGen-Offline" target="_blank" rel="noopener" class="quick-icon-btn" title="GitHub">⌥</a>
+          </div>
+        </div>
+        <h4 class="card-title">Auto Subtitle Generator</h4>
+        <p class="card-desc">
+          Offline desktop application that transcribes video/audio and auto-generates perfectly timed SRT subtitles utilizing OpenAI's Whisper model wrapped in a reactive PyQt desktop user interface.
+        </p>
+        <div class="featured-tags-row">
+          <span class="featured-tag">Whisper ML</span>
+          <span class="featured-tag">PyQt</span>
+          <span class="featured-tag">Python</span>
+          <span class="featured-tag">Offline Audio</span>
+        </div>
+      </div>
+
+      <!-- Project: Clicky Crates Game -->
+      <div class="standard-project-card reveal" data-category="games">
+        <div class="card-top-meta">
+          <span class="card-index">04 // UNITY GAME</span>
+          <div class="card-quick-links">
+            <a href="https://github.com/Aaryan21323/unity-clicky-crates" target="_blank" rel="noopener" class="quick-icon-btn" title="GitHub">⌥</a>
+            <a href="https://play.unity.com/api/v1/games/game/17f687f9-3987-4253-aeb5-559feae9d454/build/latest/frame" target="_blank" rel="noopener" class="quick-icon-btn" style="color:var(--secondary)" title="Play Game">▶</a>
+          </div>
+        </div>
+        <h4 class="card-title">Clicky Crates 3D</h4>
+        <p class="card-desc">
+          Playful reflex-clicker game created in Unity C#. Includes particle burst explosions, combo scoring logic, physics toss mechanics, audio triggers, and fully playable in-browser WebGL deployment.
+        </p>
+        <div class="featured-tags-row">
+          <span class="featured-tag">Unity</span>
+          <span class="featured-tag">C#</span>
+          <span class="featured-tag">WebGL</span>
+          <span class="featured-tag">Game Physics</span>
+        </div>
+      </div>
+
+      <!-- Project: Endless Runner -->
+      <div class="standard-project-card reveal" data-category="games">
+        <div class="card-top-meta">
+          <span class="card-index">05 // UNITY GAME</span>
+          <div class="card-quick-links">
+            <a href="https://github.com/Aaryan21323/unity-endless-runner" target="_blank" rel="noopener" class="quick-icon-btn" title="GitHub">⌥</a>
+            <a href="https://play.unity.com/api/v1/games/game/4453fd07-0702-4e9b-ab97-72b32b0b4edf/build/latest/frame" target="_blank" rel="noopener" class="quick-icon-btn" style="color:var(--secondary)" title="Play Game">▶</a>
+          </div>
+        </div>
+        <h4 class="card-title">Endless Runner 3D</h4>
+        <p class="card-desc">
+          Fast-paced infinite arcade runner built in Unity C#. Features dynamically spawned procedural obstacle tracks, physics collisions, speed ramping, and responsive jump timing.
+        </p>
+        <div class="featured-tags-row">
+          <span class="featured-tag">Unity</span>
+          <span class="featured-tag">C#</span>
+          <span class="featured-tag">Procedural Logic</span>
+          <span class="featured-tag">WebGL</span>
+        </div>
+      </div>
+
+      <!-- Project: Laravel E-Commerce -->
+      <div class="standard-project-card reveal" data-category="web">
+        <div class="card-top-meta">
+          <span class="card-index">06 // FULL-STACK</span>
+          <div class="card-quick-links">
+            <a href="https://github.com/Aaryan21323/Ecommerce-Website" target="_blank" rel="noopener" class="quick-icon-btn" title="GitHub">⌥</a>
+          </div>
+        </div>
+        <h4 class="card-title">Laravel E-Commerce CRUD</h4>
+        <p class="card-desc">
+          Full-stack online commerce web application featuring customer authentication, product inventory management, relational MySQL schema with migrations, cart flow, and secure order processing.
+        </p>
+        <div class="featured-tags-row">
+          <span class="featured-tag">Laravel</span>
+          <span class="featured-tag">PHP</span>
+          <span class="featured-tag">MySQL</span>
+          <span class="featured-tag">MVC Architecture</span>
+        </div>
+      </div>
+
+      <!-- Project: WordPress WooCommerce Store -->
+      <div class="standard-project-card reveal" data-category="web">
+        <div class="card-top-meta">
+          <span class="card-index">07 // CMS COMMERCE</span>
+        </div>
+        <h4 class="card-title">WordPress WooCommerce Store</h4>
+        <p class="card-desc">
+          Fully functional bespoke ecommerce storefront configured on WordPress and WooCommerce. Engineered and tested locally on XAMPP with product catalogues, payment gateways, and shipping zones.
+        </p>
+        <div class="featured-tags-row">
+          <span class="featured-tag">WordPress</span>
+          <span class="featured-tag">WooCommerce</span>
+          <span class="featured-tag">XAMPP</span>
+          <span class="featured-tag">PHP</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ---------- EDUCATION ---------- -->
+<!-- ==========================================================================
+     SXC HACKATHON 2.0 // GRAND PRIX TROPHY ARENA
+     ========================================================================== -->
+<section id="trophy">
+  <div class="container">
+    <div class="trophy-arena-card reveal">
+      <div class="trophy-badge-pill">
+        ★ CHAMPIONSHIP HALL // SXC SANDBOX
+      </div>
+      <h2 class="trophy-title">
+        1st Place Winner: <span class="gold-span">SXC Sandbox Hackathon 2.0</span>
+      </h2>
+      <p class="trophy-desc">
+        Under intense countdown pressure and fierce regional collegiate competition, built <strong>VisionMate</strong> — an accessibility-centered computer vision system with Python, OpenCV, and MediaPipe that earned first prize from the judging panel.
+      </p>
+
+      <div class="prize-counter-wrap">
+        <span class="prize-label">GRAND PRIZE PURSE:</span>
+        <span class="prize-amount" id="prizeCounter">Rs 75,000</span>
+      </div>
+
+      <div>
+        <a href="https://drive.google.com/file/d/1v-lYFPzZBb4hnUvafse65AVpPue2SI9M/view?usp=drive_link" target="_blank" rel="noopener" class="btn-retro btn-retro-accent">
+          <span>🏆 VIEW OFFICIAL CERTIFICATE ↗</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     EDUCATION // TIMELINE
+     ========================================================================== -->
 <section id="education">
   <div class="container">
-    <div class="section-head reveal">
-      <span class="section-num">05 / Education</span>
-      <h2 class="section-title">Where it started.</h2>
+    <div class="section-header reveal">
+      <span class="section-tag">04 // Chronology</span>
+      <h2 class="section-title">
+        Academic <span class="neon-span">Evolution.</span>
+      </h2>
     </div>
-    <div class="timeline">
-      <div class="timeline-item reveal">
-        <div class="tl-period">2022 — 2026</div>
-        <div class="tl-title">BS in Computer Science &amp; Information Technology</div>
-        <div class="tl-place">St. Xavier's College, Tribhuvan University</div>
+
+    <div class="timeline-list">
+      <div class="timeline-entry reveal">
+        <div class="timeline-node-pin"></div>
+        <div class="timeline-period-badge">2022 — 2026 [EXPECTED]</div>
+        <h3 class="timeline-role-title">B.Sc. in Computer Science &amp; Information Technology</h3>
+        <p class="timeline-institution">St. Xavier's College, Maitighar — Tribhuvan University</p>
       </div>
-      <div class="timeline-item reveal">
-        <div class="tl-period">2020 — 2022</div>
-        <div class="tl-title">Higher Secondary Education</div>
-        <div class="tl-place">Prasadi Academy</div>
+
+      <div class="timeline-entry reveal">
+        <div class="timeline-node-pin"></div>
+        <div class="timeline-period-badge">2020 — 2022</div>
+        <h3 class="timeline-role-title">Higher Secondary Education (+2 Science)</h3>
+        <p class="timeline-institution">Prasadi Academy, Lalitpur, Nepal</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ---------- CONTACT ---------- -->
-<section id="contact" class="contact-section">
+<!-- ==========================================================================
+     CERTIFICATES
+     ========================================================================== -->
+<section id="certificates">
   <div class="container">
-    <div class="reveal">
-      <h2 class="contact-title">Let's build<br><span class="accent-word">something together.</span></h2>
-      <p class="contact-sub">Currently based in Kathmandu, open to internships, freelance work, and interesting collaborations.</p>
-      <div class="contact-links">
-        <a href="mailto:aaryanbista31@gmail.com">aaryanbista31@gmail.com</a>
-        <a href="tel:+9779843802740">+977 9843802740</a>
-        <a href="https://aaryanbista.com.np" target="_blank" rel="noopener">aaryanbista.com.np</a>
-        <a href="https://github.com/Aaryan21323" target="_blank" rel="noopener">github.com/Aaryan21323</a>
+    <div class="section-header reveal">
+      <span class="section-tag">05 // Verified Credentials</span>
+      <h2 class="section-title">
+        Continuous <span class="neon-span">Knowledge.</span>
+      </h2>
+    </div>
+
+    <div class="cert-grid">
+      <a href="https://coursera.org/verify/professional-cert/G30LX0LHKJZD" target="_blank" rel="noopener" class="cert-retro-card reveal">
+        <div class="cert-info">
+          <h3>Google AI Professional Certificate</h3>
+          <p>Coursera Verified · Issued Jul 2026</p>
+        </div>
+        <div class="cert-icon-link">↗</div>
+      </a>
+
+      <div class="cert-retro-card reveal">
+        <div class="cert-info">
+          <h3>Associate Python Developer</h3>
+          <p>DataCamp Verified · Issued May 2026</p>
+        </div>
+        <div class="cert-icon-link">✓</div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- ==========================================================================
+     CONTACT // COMMS HUB
+     ========================================================================== -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-console-wrap reveal">
+      <span class="section-tag">06 // Frequency Open</span>
+      <h2 class="section-title">
+        Transmit A <span class="neon-span">Signal.</span>
+      </h2>
+      <p class="section-desc" style="margin: 0 auto;">
+        Whether you are planning a high-throughput AI application, looking for a capable software engineer for an internship/full-time role, or building something daring — my channel is open.
+      </p>
+
+      <div class="contact-comms-hub">
+        <button class="comms-link-btn" id="copyEmailBtn" data-email="aaryanbista31@gmail.com">
+          <span>✉ aaryanbista31@gmail.com</span>
+          <span style="font-size:0.7rem;color:var(--primary)">[COPY]</span>
+        </button>
+        <a href="tel:+9779843802740" class="comms-link-btn">
+          <span>☏ +977 9843802740</span>
+        </a>
+        <a href="https://github.com/Aaryan21323" target="_blank" rel="noopener" class="comms-link-btn">
+          <span>⌥ github.com/Aaryan21323</span>
+        </a>
+        <a href="https://aaryanbista.com.np" target="_blank" rel="noopener" class="comms-link-btn">
+          <span>🌐 aaryanbista.com.np</span>
+        </a>
+      </div>
+
+      <div>
+        <a href="mailto:aaryanbista31@gmail.com?subject=Transmission%20from%20Portfolio" class="btn-retro btn-retro-primary">
+          <span>⚡ LAUNCH DIRECT EMAIL CLIENT</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
 <footer>
-  <div class="container footer-row">
-    <span class="mono">© 2026 Aaryan Bista</span>
-    <span class="mono">Built in Kathmandu, Nepal</span>
+  <div class="container footer-inner">
+    <div class="footer-left">
+      <span>© 2026 AARYAN BISTA</span>
+      <span>//</span>
+      <span>BUILT IN KATHMANDU, NEPAL</span>
+    </div>
+    <div class="footer-right">
+      <span>RETRO-MODERN CODE ARCHITECTURE // NO AI ASSETS</span>
+    </div>
   </div>
 </footer>
 
-<script>
-/* ---------- PROJECT DATA ---------- */
-const projects = [
-  {
-    title: "Custom Conversational RAG Backend",
-    desc: "A retrieval-augmented generation backend combining FastAPI, Groq for fast inference, Qdrant for vector search, and Redis for caching.",
-    tags: ["FastAPI","Groq","Qdrant","Redis"],
-    github: "https://github.com/Aaryan21323/rag-backend-groq-qdrant"
-  },
-  {
-    title: "Auto Subtitle Generator",
-    desc: "An offline desktop tool that transcribes video/audio and generates subtitles automatically using Whisper, wrapped in a PyQt interface.",
-    tags: ["PyQt","Whisper","Python"],
-    github: "https://github.com/Aaryan21323/AutoSubGen-Offline"
-  },
-  {
-    title: "VisionMate",
-    desc: "An accessibility-focused computer vision project using OpenCV and MediaPipe — winner of SXC Sandbox Hackathon 2.0.",
-    tags: ["Python","OpenCV","MediaPipe"],
-    github: "https://github.com/Aaryan21323/VisionMate"
-  },
-  {
-    title: "WordPress WooCommerce Store",
-    desc: "A fully functional e-commerce storefront built on WordPress and WooCommerce, configured and deployed locally via XAMPP.",
-    tags: ["WordPress","WooCommerce","XAMPP"],
-    github: null
-  },
-  {
-    title: "Laravel E-Commerce CRUD",
-    desc: "A full-stack e-commerce application with complete CRUD functionality, built on Laravel with a MySQL database.",
-    tags: ["Laravel","MySQL","PHP"],
-    github: "https://github.com/Aaryan21323/Ecommerce-Website"
-  },
-  {
-    title: "Clicky Crates",
-    desc: "A playful clicker-style game built in Unity, from mechanics to UI, published and playable in-browser.",
-    tags: ["Unity","C#"],
-    github: "https://github.com/Aaryan21323/unity-clicky-crates",
-    play: "https://play.unity.com/api/v1/games/game/17f687f9-3987-4253-aeb5-559feae9d454/build/latest/frame"
-  },
-  {
-    title: "Endless Runner",
-    desc: "A fast-paced endless runner built in Unity, focused on procedural obstacles and responsive controls.",
-    tags: ["Unity","C#"],
-    github: "https://github.com/Aaryan21323/unity-endless-runner",
-    play: "https://play.unity.com/api/v1/games/game/4453fd07-0702-4e9b-ab97-72b32b0b4edf/build/latest/frame"
-  }
-];
-
-const grid = document.getElementById('projectsGrid');
-projects.forEach((p, i) => {
-  const card = document.createElement('div');
-  card.className = 'project-card reveal';
-  let links = '';
-  if (p.github) links += `<a href="${p.github}" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub repository">⌥</a>`;
-  if (p.play) links += `<a href="${p.play}" target="_blank" rel="noopener" title="Play" aria-label="Play game">▶</a>`;
-  card.innerHTML = `
-    <div class="project-top">
-      <span class="project-index">${String(i+1).padStart(2,'0')}</span>
-      <div class="project-links">${links}</div>
+<!-- ==========================================================================
+     MINI-ARCADE CABINET MODAL (Interactive Canvas Game)
+     ========================================================================== -->
+<div class="arcade-modal-backdrop" id="arcadeModal">
+  <div class="arcade-cabinet">
+    <div class="arcade-cab-header">
+      <span>★ CYBER-DEFENDER // 1984 VINTAGE ARCADE</span>
+      <button id="closeArcadeBtn" style="color:#ff5f56;font-size:1.1rem;font-weight:700">✕</button>
     </div>
-    <div class="project-title">${p.title}</div>
-    <div class="project-desc">${p.desc}</div>
-    <div class="project-tags">${p.tags.map(t => `<span>${t}</span>`).join('')}</div>
-  `;
-  card.addEventListener('mousemove', (e) => {
-    const rect = card.getBoundingClientRect();
-    card.style.setProperty('--mx', (e.clientX - rect.left) + 'px');
-    card.style.setProperty('--my', (e.clientY - rect.top) + 'px');
-  });
-  grid.appendChild(card);
+    <div class="arcade-screen-frame">
+      <canvas id="mini-arcade-canvas" width="580" height="340"></canvas>
+    </div>
+    <div class="arcade-controls-hud">
+      <div>
+        <span>CONTROLS: <strong>[← / →]</strong> OR <strong>[A / D]</strong> TO MOVE · <strong>[SPACE]</strong> TO FIRE</span>
+      </div>
+      <div class="arcade-touch-controls">
+        <button class="hud-btn" id="touchLeftBtn">◀ LEFT</button>
+        <button class="hud-btn" id="touchFireBtn" style="color:var(--secondary)">● FIRE</button>
+        <button class="hud-btn" id="touchRightBtn">RIGHT ▶</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==========================================================================
+     RETRO CYBERDECK TERMINAL DRAWER (CLI)
+     ========================================================================== -->
+<div class="cyber-terminal-drawer" id="cyberTerminal">
+  <div class="terminal-drawer-header" id="terminalHeaderToggle">
+    <div style="display:flex;align-items:center;gap:8px">
+      <span class="win-dot red"></span>
+      <span class="win-dot yellow"></span>
+      <span class="win-dot green"></span>
+      <span style="font-weight:700">CYBERDECK // aaryan@os-v2.6.4</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px">
+      <span id="termStatusTag">[CLICK TO EXPAND/MINIMIZE]</span>
+      <span id="termToggleIcon">▲</span>
+    </div>
+  </div>
+  <div class="terminal-output-window" id="terminalOutput">
+    <div class="term-line system">✦ CYBERDECK TERMINAL INITIALIZED [SESSION #4829]</div>
+    <div class="term-line dim">Type <span style="color:var(--primary)">'help'</span> to view available system routines. Try <span style="color:var(--secondary)">'play'</span> or <span style="color:var(--success)">'sudo hire'</span>.</div>
+  </div>
+  <div class="terminal-input-row">
+    <span class="term-prompt-tag">aaryan@cyberdeck:~$</span>
+    <input type="text" id="terminalCliInput" autocomplete="off" spellcheck="false" placeholder="Type a command...">
+  </div>
+</div>
+
+<!-- Copy Toast Alert -->
+<div class="copy-toast" id="copyToast">COPIED TO CLIPBOARD // READY TO TRANSMIT</div>
+
+<!-- ==========================================================================
+     JAVASCRIPT LOGIC & HARDWARE EMULATION
+     ========================================================================== -->
+<script>
+/* ==========================================================================
+   1. RETRO WEB AUDIO API SYNTHESIZER
+   ========================================================================== */
+const RetroAudio = (function() {
+  let ctx = null;
+  let enabled = false;
+
+  function init() {
+    if (!ctx) {
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      if (AudioCtx) ctx = new AudioCtx();
+    }
+  }
+
+  function playTone(freq, type = 'square', duration = 0.08, vol = 0.05, freqSlide = null) {
+    if (!enabled) return;
+    try {
+      init();
+      if (ctx.state === 'suspended') ctx.resume();
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = type;
+      osc.frequency.setValueAtTime(freq, ctx.currentTime);
+      if (freqSlide) {
+        osc.frequency.exponentialRampToValueAtTime(freqSlide, ctx.currentTime + duration);
+      }
+      gain.gain.setValueAtTime(vol, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + duration);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start();
+      osc.stop(ctx.currentTime + duration);
+    } catch(e) {}
+  }
+
+  return {
+    toggle: function() {
+      enabled = !enabled;
+      init();
+      if (enabled) {
+        playTone(600, 'square', 0.1, 0.08, 900);
+      }
+      return enabled;
+    },
+    isEnabled: function() { return enabled; },
+    blip: function() { playTone(880, 'sine', 0.04, 0.03); },
+    click: function() { playTone(320, 'triangle', 0.03, 0.05, 120); },
+    laser: function() { playTone(980, 'sawtooth', 0.14, 0.06, 180); },
+    success: function() {
+      playTone(523.25, 'triangle', 0.09, 0.05);
+      setTimeout(() => playTone(659.25, 'triangle', 0.09, 0.05), 80);
+      setTimeout(() => playTone(783.99, 'triangle', 0.15, 0.06), 160);
+    },
+    error: function() {
+      playTone(220, 'sawtooth', 0.15, 0.07, 110);
+    }
+  };
+})();
+
+/* SFX Button Hook */
+const sfxBtn = document.getElementById('sfxToggleBtn');
+const sfxStatus = document.getElementById('sfxStatus');
+sfxBtn.addEventListener('click', () => {
+  const on = RetroAudio.toggle();
+  sfxStatus.textContent = on ? 'ON' : 'OFF';
+  sfxBtn.classList.toggle('active', on);
 });
 
-/* ---------- NAV ---------- */
-const navbar = document.getElementById('navbar');
+// Sound cues on interactive hover
+document.querySelectorAll('a, button, .skill-pill, .standard-project-card').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    if (RetroAudio.isEnabled()) RetroAudio.blip();
+  });
+  el.addEventListener('click', () => {
+    if (RetroAudio.isEnabled()) RetroAudio.click();
+  });
+});
+
+/* ==========================================================================
+   2. CRT SCREEN & THEME SWITCHER
+   ========================================================================== */
+const crtOverlay = document.getElementById('crtOverlay');
+const crtBtn = document.getElementById('crtToggleBtn');
+let crtActive = true;
+
+crtBtn.addEventListener('click', () => {
+  crtActive = !crtActive;
+  crtOverlay.classList.toggle('active', crtActive);
+  document.body.classList.toggle('crt-curved', crtActive);
+  crtBtn.classList.toggle('active', crtActive);
+  crtBtn.innerHTML = `<span>CRT</span> [${crtActive ? 'ON' : 'OFF'}]`;
+  RetroAudio.click();
+});
+
+const themes = ['cyber', 'amber', 'matrix'];
+let currentThemeIndex = 0;
+const themeBtn = document.getElementById('themeSwitchBtn');
+const themeNameTag = document.getElementById('themeNameTag');
+
+themeBtn.addEventListener('click', () => {
+  currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+  const theme = themes[currentThemeIndex];
+  document.documentElement.setAttribute('data-theme', theme);
+  themeNameTag.textContent = `THEME: ${theme.toUpperCase()}`;
+  RetroAudio.laser();
+});
+
+/* ==========================================================================
+   3. KATHMANDU CLOCK
+   ========================================================================== */
+function updateKathmanduClock() {
+  const now = new Date();
+  const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+  const nst = new Date(utc + (3600000 * 5.75));
+  const h = String(nst.getHours()).padStart(2, '0');
+  const m = String(nst.getMinutes()).padStart(2, '0');
+  const s = String(nst.getSeconds()).padStart(2, '0');
+  const clockEl = document.getElementById('kathmanduClock');
+  if (clockEl) clockEl.textContent = `${h}:${m}:${s} NST`;
+}
+setInterval(updateKathmanduClock, 1000);
+updateKathmanduClock();
+
+/* ==========================================================================
+   4. NAVIGATION SCROLL & MOBILE MENU
+   ========================================================================== */
+const mainNav = document.getElementById('mainNav');
 window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 40);
+  mainNav.classList.toggle('scrolled', window.scrollY > 40);
 }, { passive: true });
 
-const navToggle = document.getElementById('navToggle');
+const mobileToggle = document.getElementById('mobileMenuToggle');
 const navLinks = document.getElementById('navLinks');
-navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
-navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+mobileToggle.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+  RetroAudio.click();
+});
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => navLinks.classList.remove('open'));
+});
 
-/* ---------- REVEAL ON SCROLL ---------- */
+/* ==========================================================================
+   5. TYPEWRITER EFFECT IN HERO
+   ========================================================================== */
+const heroRoles = [
+  "AI & Conversational RAG Architect",
+  "Computer Vision Tinkerer (OpenCV & MediaPipe)",
+  "Full-Stack Python & Laravel Engineer",
+  "Winner: SXC Sandbox Hackathon 2.0",
+  "Unity 3D WebGL Game Developer"
+];
+const typedTextEl = document.getElementById('heroTypedText');
+let roleIdx = 0, charIdx = 0, isDeleting = false;
+
+function typeHeroRole() {
+  const current = heroRoles[roleIdx];
+  if (!isDeleting) {
+    charIdx++;
+    typedTextEl.textContent = current.slice(0, charIdx);
+    if (charIdx === current.length) {
+      isDeleting = true;
+      setTimeout(typeHeroRole, 2000);
+      return;
+    }
+  } else {
+    charIdx--;
+    typedTextEl.textContent = current.slice(0, charIdx);
+    if (charIdx === 0) {
+      isDeleting = false;
+      roleIdx = (roleIdx + 1) % heroRoles.length;
+    }
+  }
+  setTimeout(typeHeroRole, isDeleting ? 30 : 65);
+}
+typeHeroRole();
+
+/* ==========================================================================
+   6. 3D RETRO SYNTH HORIZON CANVAS (HERO)
+   ========================================================================== */
+(function() {
+  const canvas = document.getElementById('hero-synth-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let w, h;
+  let mouse = { x: 0, y: 0 };
+  let offset = 0;
+
+  function resize() {
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = canvas.parentElement.offsetHeight;
+  }
+  window.addEventListener('resize', resize, { passive: true });
+  resize();
+
+  window.addEventListener('mousemove', (e) => {
+    mouse.x = (e.clientX / window.innerWidth) - 0.5;
+    mouse.y = (e.clientY / window.innerHeight) - 0.5;
+  }, { passive: true });
+
+  function draw() {
+    ctx.clearRect(0, 0, w, h);
+    const horizon = h * 0.62;
+
+    // Background gradient
+    const bgGrad = ctx.createLinearGradient(0, 0, 0, h);
+    bgGrad.addColorStop(0, 'rgba(8, 5, 18, 0.9)');
+    bgGrad.addColorStop(0.6, 'rgba(18, 10, 38, 0.6)');
+    bgGrad.addColorStop(1, 'rgba(4, 2, 10, 0.95)');
+    ctx.fillStyle = bgGrad;
+    ctx.fillRect(0, 0, w, h);
+
+    // Retro Synth Sun
+    const sunX = w * 0.5 + mouse.x * 40;
+    const sunY = horizon - 40;
+    const sunR = Math.min(120, w * 0.18);
+    const sunGrad = ctx.createLinearGradient(sunX, sunY - sunR, sunX, sunY + sunR);
+    sunGrad.addColorStop(0, 'rgba(255, 230, 0, 0.85)');
+    sunGrad.addColorStop(0.6, 'rgba(255, 0, 122, 0.7)');
+    sunGrad.addColorStop(1, 'rgba(128, 0, 255, 0)');
+    ctx.fillStyle = sunGrad;
+    ctx.beginPath();
+    ctx.arc(sunX, sunY, sunR, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Horizontal scanline cutouts on Sun
+    ctx.fillStyle = 'rgba(8, 5, 18, 0.85)';
+    for (let y = sunY - 20; y < sunY + sunR; y += 10) {
+      const sliceH = ((y - (sunY - 20)) / (sunR + 20)) * 5 + 1;
+      ctx.fillRect(sunX - sunR - 10, y, (sunR + 10) * 2, sliceH);
+    }
+
+    // Perspective wireframe grid
+    offset = (offset + 1.2) % 40;
+    ctx.save();
+    ctx.strokeStyle = 'rgba(0, 240, 255, 0.28)';
+    ctx.lineWidth = 1;
+
+    // Horizon line
+    ctx.beginPath();
+    ctx.moveTo(0, horizon);
+    ctx.lineTo(w, horizon);
+    ctx.stroke();
+
+    // Horizontal grid lines
+    for (let i = 0; i < 18; i++) {
+      const p = Math.pow((i + (offset / 40)) / 18, 2.5);
+      const y = horizon + p * (h - horizon);
+      ctx.beginPath();
+      ctx.moveTo(0, y);
+      ctx.lineTo(w, y);
+      ctx.stroke();
+    }
+
+    // Perspective vanishing lines
+    const fovCount = Math.floor(w / 45);
+    const vpX = w * 0.5 + mouse.x * 90;
+    for (let i = -fovCount; i <= fovCount * 2; i++) {
+      const x = i * 45;
+      ctx.beginPath();
+      ctx.moveTo(vpX, horizon);
+      ctx.lineTo(x + mouse.x * -80, h);
+      ctx.stroke();
+    }
+    ctx.restore();
+
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* ==========================================================================
+   7. ABOUT SECTION // LIVE CRT OSCILLOSCOPE CANVAS
+   ========================================================================== */
+(function() {
+  const scopeCanvas = document.getElementById('pilot-scope-canvas');
+  if (!scopeCanvas) return;
+  const sCtx = scopeCanvas.getContext('2d');
+  let phase = 0;
+
+  function renderScope() {
+    const sw = scopeCanvas.width = scopeCanvas.offsetWidth;
+    const sh = scopeCanvas.height = scopeCanvas.offsetHeight;
+    sCtx.clearRect(0, 0, sw, sh);
+
+    // Subtle center line
+    sCtx.strokeStyle = 'rgba(0, 240, 255, 0.15)';
+    sCtx.lineWidth = 1;
+    sCtx.beginPath();
+    sCtx.moveTo(0, sh / 2);
+    sCtx.lineTo(sw, sh / 2);
+    sCtx.stroke();
+
+    // Glowing phosphor waveform
+    sCtx.strokeStyle = '#00ff88';
+    sCtx.lineWidth = 2;
+    sCtx.shadowColor = '#00ff88';
+    sCtx.shadowBlur = 8;
+    sCtx.beginPath();
+
+    for (let x = 0; x < sw; x++) {
+      const progress = x / sw;
+      const y = sh / 2 + Math.sin(progress * 14 + phase) * 20 * Math.sin(progress * 4 + phase * 0.5)
+                        + Math.cos(progress * 28 + phase * 1.5) * 6;
+      if (x === 0) sCtx.moveTo(x, y);
+      else sCtx.lineTo(x, y);
+    }
+    sCtx.stroke();
+    phase += 0.06;
+    requestAnimationFrame(renderScope);
+  }
+  renderScope();
+})();
+
+/* ==========================================================================
+   8. FEATURED 1: VISIONMATE INTERACTIVE COMPUTER VISION HUD CANVAS
+   ========================================================================== */
+(function() {
+  const canvas = document.getElementById('visionmate-hud-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const cardBox = document.getElementById('visionmateCardBox');
+  let mouse = { x: 300, y: 170, active: false };
+
+  cardBox.addEventListener('mousemove', (e) => {
+    const rect = canvas.getBoundingClientRect();
+    mouse.x = (e.clientX - rect.left) * (canvas.width / rect.width);
+    mouse.y = (e.clientY - rect.top) * (canvas.height / rect.height);
+    mouse.active = true;
+  });
+
+  cardBox.addEventListener('mouseleave', () => {
+    mouse.active = false;
+  });
+
+  let t = 0;
+  function renderVisionMate() {
+    t += 0.03;
+    const w = canvas.width;
+    const h = canvas.height;
+    ctx.clearRect(0, 0, w, h);
+
+    // Dark cyber grid
+    ctx.fillStyle = '#030209';
+    ctx.fillRect(0, 0, w, h);
+
+    ctx.strokeStyle = 'rgba(0, 240, 255, 0.08)';
+    ctx.lineWidth = 1;
+    for (let x = 0; x < w; x += 30) {
+      ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke();
+    }
+    for (let y = 0; y < h; y += 30) {
+      ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke();
+    }
+
+    // Target tracking point (smooth follow mouse or default circle)
+    const targetX = mouse.active ? mouse.x : (w / 2 + Math.sin(t * 1.2) * 80);
+    const targetY = mouse.active ? mouse.y : (h / 2 + Math.cos(t) * 45);
+
+    // Crosshairs & Bounding Box
+    ctx.strokeStyle = '#00f0ff';
+    ctx.lineWidth = 1.5;
+    ctx.strokeRect(targetX - 55, targetY - 55, 110, 110);
+
+    // Corner brackets
+    ctx.strokeStyle = '#ff007a';
+    ctx.lineWidth = 3;
+    const cSize = 14;
+    // Top-left
+    ctx.beginPath(); ctx.moveTo(targetX - 55, targetY - 55 + cSize); ctx.lineTo(targetX - 55, targetY - 55); ctx.lineTo(targetX - 55 + cSize, targetY - 55); ctx.stroke();
+    // Top-right
+    ctx.beginPath(); ctx.moveTo(targetX + 55 - cSize, targetY - 55); ctx.lineTo(targetX + 55, targetY - 55); ctx.lineTo(targetX + 55, targetY - 55 + cSize); ctx.stroke();
+    // Bottom-left
+    ctx.beginPath(); ctx.moveTo(targetX - 55, targetY + 55 - cSize); ctx.lineTo(targetX - 55, targetY + 55); ctx.lineTo(targetX - 55 + cSize, targetY + 55); ctx.stroke();
+    // Bottom-right
+    ctx.beginPath(); ctx.moveTo(targetX + 55 - cSize, targetY + 55); ctx.lineTo(targetX + 55, targetY + 55); ctx.lineTo(targetX + 55, targetY + 55 - cSize); ctx.stroke();
+
+    // Center crosshair
+    ctx.strokeStyle = 'rgba(0, 240, 255, 0.4)';
+    ctx.beginPath();
+    ctx.moveTo(targetX, 0); ctx.lineTo(targetX, h);
+    ctx.moveTo(0, targetY); ctx.lineTo(w, targetY);
+    ctx.stroke();
+
+    // MediaPipe Hand Landmark Wireframe skeleton
+    const landmarks = [
+      { x: targetX, y: targetY + 35 },        // Wrist (0)
+      { x: targetX - 25, y: targetY + 15 },    // Thumb base (1)
+      { x: targetX - 35, y: targetY - 10 },    // Thumb tip (2)
+      { x: targetX - 15, y: targetY - 25 },    // Index base (3)
+      { x: targetX - 18, y: targetY - 45 },    // Index tip (4)
+      { x: targetX, y: targetY - 30 },         // Middle base (5)
+      { x: targetX + 2, y: targetY - 50 },     // Middle tip (6)
+      { x: targetX + 15, y: targetY - 26 },    // Ring base (7)
+      { x: targetX + 18, y: targetY - 44 },    // Ring tip (8)
+      { x: targetX + 28, y: targetY - 15 },    // Pinky base (9)
+      { x: targetX + 32, y: targetY - 35 }     // Pinky tip (10)
+    ];
+
+    // Connect skeleton bones
+    ctx.strokeStyle = 'rgba(0, 255, 136, 0.7)';
+    ctx.lineWidth = 1.8;
+    const connections = [
+      [0,1],[1,2],[0,3],[3,4],[0,5],[5,6],[0,7],[7,8],[0,9],[9,10]
+    ];
+    connections.forEach(([i, j]) => {
+      ctx.beginPath();
+      ctx.moveTo(landmarks[i].x, landmarks[i].y);
+      ctx.lineTo(landmarks[j].x, landmarks[j].y);
+      ctx.stroke();
+    });
+
+    // Draw landmark joint nodes
+    landmarks.forEach((p, idx) => {
+      ctx.fillStyle = idx % 2 === 0 ? '#ff007a' : '#00f0ff';
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, 3.5, 0, Math.PI * 2);
+      ctx.fill();
+    });
+
+    // Telemetry text overlay
+    ctx.font = '10px "JetBrains Mono", monospace';
+    ctx.fillStyle = '#00f0ff';
+    ctx.fillText(`CV_NODE: MEDIAPIPE_HAND`, 16, 24);
+    ctx.fillText(`CONF: 98.4% // FPS: 60`, 16, 40);
+    ctx.fillText(`TARGET: [X:${Math.round(targetX)}, Y:${Math.round(targetY)}]`, 16, 56);
+    ctx.fillStyle = '#00ff88';
+    ctx.fillText(`GESTURE: TRACKING_LOCKED`, w - 170, 24);
+
+    requestAnimationFrame(renderVisionMate);
+  }
+  renderVisionMate();
+})();
+
+/* ==========================================================================
+   9. FEATURED 2: CONVERSATIONAL RAG VECTOR PIPELINE CANVAS
+   ========================================================================== */
+(function() {
+  const canvas = document.getElementById('rag-matrix-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const cardBox = document.getElementById('ragCardBox');
+  let speedMultiplier = 1;
+
+  cardBox.addEventListener('mouseenter', () => { speedMultiplier = 2.4; });
+  cardBox.addEventListener('mouseleave', () => { speedMultiplier = 1; });
+
+  const nodes = [
+    { name: "USER QUERY", x: 80, y: 170, color: "#ffe600" },
+    { name: "FASTAPI GATE", x: 210, y: 170, color: "#00f0ff" },
+    { name: "GROQ LPU", x: 350, y: 100, color: "#ff007a" },
+    { name: "QDRANT VEC_DB", x: 350, y: 240, color: "#00ff88" },
+    { name: "REDIS CACHE", x: 490, y: 170, color: "#00f0ff" }
+  ];
+
+  let packets = [];
+  function spawnPacket() {
+    const route = [
+      [0, 1],
+      [1, 2],
+      [1, 3],
+      [2, 4],
+      [3, 4]
+    ][Math.floor(Math.random() * 5)];
+    packets.push({
+      start: nodes[route[0]],
+      end: nodes[route[1]],
+      progress: 0,
+      speed: (0.012 + Math.random() * 0.008) * speedMultiplier
+    });
+  }
+
+  function renderRAG() {
+    const w = canvas.width;
+    const h = canvas.height;
+    ctx.clearRect(0, 0, w, h);
+
+    // Deep background
+    ctx.fillStyle = '#020309';
+    ctx.fillRect(0, 0, w, h);
+
+    // Draw connecting circuit traces
+    ctx.strokeStyle = 'rgba(0, 240, 255, 0.2)';
+    ctx.lineWidth = 2;
+    const connections = [
+      [0, 1], [1, 2], [1, 3], [2, 4], [3, 4]
+    ];
+    connections.forEach(([a, b]) => {
+      ctx.beginPath();
+      ctx.moveTo(nodes[a].x, nodes[a].y);
+      ctx.lineTo(nodes[b].x, nodes[b].y);
+      ctx.stroke();
+    });
+
+    // Spawn packets periodically
+    if (Math.random() < 0.12 * speedMultiplier && packets.length < 24) {
+      spawnPacket();
+    }
+
+    // Update and draw packets
+    for (let i = packets.length - 1; i >= 0; i--) {
+      const pkt = packets[i];
+      pkt.progress += pkt.speed * speedMultiplier;
+      const curX = pkt.start.x + (pkt.end.x - pkt.start.x) * pkt.progress;
+      const curY = pkt.start.y + (pkt.end.y - pkt.start.y) * pkt.progress;
+
+      ctx.fillStyle = '#ffe600';
+      ctx.shadowColor = '#ffe600';
+      ctx.shadowBlur = 10;
+      ctx.beginPath();
+      ctx.arc(curX, curY, 4, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.shadowBlur = 0;
+
+      if (pkt.progress >= 1) packets.splice(i, 1);
+    }
+
+    // Draw Core Nodes
+    nodes.forEach(n => {
+      // Glow circle
+      ctx.fillStyle = 'rgba(10, 8, 22, 0.9)';
+      ctx.strokeStyle = n.color;
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, 20, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.stroke();
+
+      // Center pulse
+      ctx.fillStyle = n.color;
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, 6, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Node Label
+      ctx.font = '9px "JetBrains Mono", monospace';
+      ctx.fillStyle = '#fff';
+      ctx.textAlign = 'center';
+      ctx.fillText(n.name, n.x, n.y + 34);
+    });
+
+    // Top HUD stats
+    ctx.textAlign = 'left';
+    ctx.font = '10px "JetBrains Mono", monospace';
+    ctx.fillStyle = '#00f0ff';
+    ctx.fillText(`PIPELINE: GROQ_LPU + QDRANT_VECTORS`, 16, 24);
+    ctx.fillStyle = '#00ff88';
+    ctx.fillText(`LATENCY: <80ms // SEMANTIC_CACHE: ACTIVE`, 16, 40);
+
+    requestAnimationFrame(renderRAG);
+  }
+  renderRAG();
+})();
+
+/* ==========================================================================
+   10. PROJECT CATEGORY FILTER
+   ========================================================================== */
+const filterBtns = document.querySelectorAll('.filter-btn');
+const allProjects = document.querySelectorAll('[data-category]');
+
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const category = btn.getAttribute('data-filter');
+    RetroAudio.click();
+
+    allProjects.forEach(card => {
+      const cardCat = card.getAttribute('data-category');
+      if (category === 'all' || cardCat === category) {
+        card.style.display = '';
+        setTimeout(() => card.classList.add('visible'), 50);
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+});
+
+/* ==========================================================================
+   11. COPY EMAIL CLIPBOARD & TOAST
+   ========================================================================== */
+const copyEmailBtn = document.getElementById('copyEmailBtn');
+const copyToast = document.getElementById('copyToast');
+
+copyEmailBtn.addEventListener('click', () => {
+  const email = copyEmailBtn.getAttribute('data-email');
+  navigator.clipboard.writeText(email).then(() => {
+    copyToast.classList.add('visible');
+    RetroAudio.success();
+    setTimeout(() => copyToast.classList.remove('visible'), 2800);
+  });
+});
+
+/* ==========================================================================
+   12. SCROLL REVEAL OBSERVER
+   ========================================================================== */
 const revealEls = document.querySelectorAll('.reveal');
-const io = new IntersectionObserver((entries) => {
+const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add('visible');
-      io.unobserve(entry.target);
+      observer.unobserve(entry.target);
     }
   });
-}, { threshold: 0.15 });
-revealEls.forEach(el => io.observe(el));
+}, { threshold: 0.1 });
+revealEls.forEach(el => observer.observe(el));
 
-/* ---------- TYPED ROLE ---------- */
-const roles = [
-  "Software engineer",
-  "AI & RAG systems builder",
-  "Computer vision tinkerer",
-  "Full-stack developer",
-  "Game developer"
-];
-const typedEl = document.getElementById('typedRole');
-const cursor = typedEl.querySelector('.type-cursor');
-let roleIndex = 0, charIndex = 0, deleting = false;
-const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+/* ==========================================================================
+   13. RETRO CYBERDECK TERMINAL DRAWER (CLI)
+   ========================================================================== */
+const cyberTerminal = document.getElementById('cyberTerminal');
+const termHeader = document.getElementById('terminalHeaderToggle');
+const termOutput = document.getElementById('terminalOutput');
+const termInput = document.getElementById('terminalCliInput');
+const termToggleIcon = document.getElementById('termToggleIcon');
+const openCliBtn = document.getElementById('openCliBtn');
 
-function typeLoop(){
-  if (reduceMotion) { typedEl.firstChild.textContent = roles[0]; return; }
-  const current = roles[roleIndex];
-  if (!deleting) {
-    charIndex++;
-    typedEl.firstChild.textContent = current.slice(0, charIndex);
-    if (charIndex === current.length) { deleting = true; setTimeout(typeLoop, 1400); return; }
-  } else {
-    charIndex--;
-    typedEl.firstChild.textContent = current.slice(0, charIndex);
-    if (charIndex === 0) { deleting = false; roleIndex = (roleIndex + 1) % roles.length; }
-  }
-  setTimeout(typeLoop, deleting ? 35 : 65);
+function toggleTerminal() {
+  cyberTerminal.classList.toggle('expanded');
+  const isExp = cyberTerminal.classList.contains('expanded');
+  termToggleIcon.textContent = isExp ? '▼' : '▲';
+  RetroAudio.click();
+  if (isExp) setTimeout(() => termInput.focus(), 250);
 }
-typedEl.insertBefore(document.createTextNode(''), cursor);
-typeLoop();
 
-/* ---------- HERO NODE NETWORK CANVAS ---------- */
-(function(){
-  const canvas = document.getElementById('hero-canvas');
-  const ctx = canvas.getContext('2d');
-  let w, h, nodes = [];
-  const hero = document.querySelector('.hero');
-  let mouse = { x: null, y: null };
+termHeader.addEventListener('click', toggleTerminal);
+openCliBtn.addEventListener('click', toggleTerminal);
 
-  function resize(){
-    w = canvas.width = hero.offsetWidth;
-    h = canvas.height = hero.offsetHeight;
-    const count = Math.max(28, Math.min(70, Math.floor((w*h)/26000)));
-    nodes = Array.from({length: count}, () => ({
-      x: Math.random()*w, y: Math.random()*h,
-      vx: (Math.random()-0.5)*0.28, vy: (Math.random()-0.5)*0.28,
-      r: Math.random()*1.6 + 1
-    }));
+function appendTermLine(text, type = '') {
+  const line = document.createElement('div');
+  line.className = `term-line ${type}`;
+  line.innerHTML = text;
+  termOutput.appendChild(line);
+  termOutput.scrollTop = termOutput.scrollHeight;
+}
+
+termInput.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    const raw = termInput.value.trim();
+    termInput.value = '';
+    if (!raw) return;
+
+    appendTermLine(`aaryan@cyberdeck:~$ ${raw}`, 'cmd');
+    const cmd = raw.toLowerCase();
+
+    switch(cmd) {
+      case 'help':
+        appendTermLine('COMMANDS AVAILABLE:', 'system');
+        appendTermLine('  about      - Display software engineer dossier');
+        appendTermLine('  skills     - Hardware matrix & modules');
+        appendTermLine('  projects   - Highlighted systems in the vault');
+        appendTermLine('  trophy     - SXC Hackathon 2.0 1st place info');
+        appendTermLine('  contact    - Transmission frequencies');
+        appendTermLine('  play       - Launch the retro mini-arcade');
+        appendTermLine('  crt        - Toggle CRT scanline screen');
+        appendTermLine('  theme      - Cycle color theme (cyber/amber/matrix)');
+        appendTermLine('  sfx        - Toggle 8-bit sound effects');
+        appendTermLine('  sudo hire  - Instant direct contract trigger');
+        appendTermLine('  clear      - Clear terminal screen');
+        RetroAudio.click();
+        break;
+
+      case 'about':
+        appendTermLine('Aaryan Bista // BS CSIT @ St. Xavier\'s College, TU (Grad 2026)', 'success');
+        appendTermLine('Kathmandu, Nepal. Winner SXC Sandbox Hackathon 2.0 (VisionMate).', 'dim');
+        break;
+
+      case 'skills':
+        appendTermLine('AI & CV: OpenCV, MediaPipe, Whisper, Groq, Qdrant, Redis', 'warning');
+        appendTermLine('Languages: Python, C#, Java, C/C++, SQL, JavaScript', 'dim');
+        appendTermLine('Web: FastAPI, Django, Laravel, WordPress, WooCommerce', 'dim');
+        appendTermLine('Game Dev: Unity Engine, Unreal Engine 5, C# Mechanics', 'dim');
+        break;
+
+      case 'projects':
+        appendTermLine('1. VisionMate (Python/OpenCV/MediaPipe) - 1st Place Hackathon', 'warning');
+        appendTermLine('2. Conversational RAG (FastAPI/Groq/Qdrant/Redis)', 'success');
+        appendTermLine('3. AutoSubGen Offline (PyQt/Whisper)', 'dim');
+        appendTermLine('4. Clicky Crates & Endless Runner (Unity WebGL)', 'dim');
+        break;
+
+      case 'trophy':
+        appendTermLine('🏆 1ST PLACE WINNER // SXC SANDBOX HACKATHON 2.0', 'warning');
+        appendTermLine('Prize: Rs 75,000. Project: VisionMate accessibility CV.', 'success');
+        RetroAudio.success();
+        break;
+
+      case 'contact':
+        appendTermLine('Email: aaryanbista31@gmail.com', 'success');
+        appendTermLine('Phone: +977 9843802740', 'dim');
+        appendTermLine('GitHub: github.com/Aaryan21323', 'dim');
+        break;
+
+      case 'play':
+        appendTermLine('Launching Mini-Arcade cabinet...', 'system');
+        openArcadeModal();
+        break;
+
+      case 'crt':
+        crtBtn.click();
+        appendTermLine(`CRT Display: ${crtActive ? 'ENABLED' : 'DISABLED'}`, 'success');
+        break;
+
+      case 'theme':
+        themeBtn.click();
+        appendTermLine(`Theme changed to ${themes[currentThemeIndex].toUpperCase()}`, 'success');
+        break;
+
+      case 'sfx':
+        sfxBtn.click();
+        appendTermLine(`Sound Effects: ${RetroAudio.isEnabled() ? 'ENABLED' : 'DISABLED'}`, 'success');
+        break;
+
+      case 'sudo hire':
+        appendTermLine('ACCESS GRANTED: Priority Contact Channel Unlocked!', 'warning');
+        appendTermLine('Opening direct mail communication...', 'success');
+        RetroAudio.success();
+        setTimeout(() => {
+          window.location.href = 'mailto:aaryanbista31@gmail.com?subject=Opportunity%20Inquiry%20via%20Terminal';
+        }, 1200);
+        break;
+
+      case 'clear':
+        termOutput.innerHTML = '';
+        break;
+
+      default:
+        appendTermLine(`bash: ${cmd}: command not recognized. Type 'help'.`, 'system');
+        RetroAudio.error();
+    }
+  }
+});
+
+/* ==========================================================================
+   14. PLAYABLE RETRO MINI-ARCADE (CANVAS GAME: CYBER-DEFENDER)
+   ========================================================================== */
+const arcadeModal = document.getElementById('arcadeModal');
+const launchArcadeBtn = document.getElementById('launchArcadeBtn');
+const heroPlayArcadeBtn = document.getElementById('heroPlayArcadeBtn');
+const closeArcadeBtn = document.getElementById('closeArcadeBtn');
+const arcadeCanvas = document.getElementById('mini-arcade-canvas');
+const aCtx = arcadeCanvas.getContext('2d');
+
+let gameRunning = false;
+let gameAnimId = null;
+let player = { x: 260, y: 300, w: 32, h: 20, speed: 6 };
+let bullets = [];
+let enemies = [];
+let score = 0;
+let keys = {};
+
+function openArcadeModal() {
+  arcadeModal.classList.add('open');
+  RetroAudio.laser();
+  startGame();
+}
+
+function closeArcadeModal() {
+  arcadeModal.classList.remove('open');
+  stopGame();
+  RetroAudio.click();
+}
+
+launchArcadeBtn.addEventListener('click', openArcadeModal);
+heroPlayArcadeBtn.addEventListener('click', openArcadeModal);
+closeArcadeBtn.addEventListener('click', closeArcadeModal);
+
+window.addEventListener('keydown', (e) => {
+  keys[e.key] = true;
+  if (e.key === ' ' && gameRunning) {
+    e.preventDefault();
+    fireBullet();
+  }
+  if (e.key === 'Escape' && arcadeModal.classList.contains('open')) {
+    closeArcadeModal();
+  }
+});
+window.addEventListener('keyup', (e) => { keys[e.key] = false; });
+
+// Touch controls for mobile
+document.getElementById('touchLeftBtn').addEventListener('pointerdown', () => { keys['ArrowLeft'] = true; });
+document.getElementById('touchLeftBtn').addEventListener('pointerup', () => { keys['ArrowLeft'] = false; });
+document.getElementById('touchRightBtn').addEventListener('pointerdown', () => { keys['ArrowRight'] = true; });
+document.getElementById('touchRightBtn').addEventListener('pointerup', () => { keys['ArrowRight'] = false; });
+document.getElementById('touchFireBtn').addEventListener('pointerdown', () => { fireBullet(); });
+
+function fireBullet() {
+  bullets.push({ x: player.x + player.w / 2 - 2, y: player.y, w: 4, h: 10, speed: 8 });
+  RetroAudio.laser();
+}
+
+function startGame() {
+  gameRunning = true;
+  player.x = arcadeCanvas.width / 2 - 16;
+  bullets = [];
+  enemies = [];
+  score = 0;
+  spawnEnemyWave();
+  loopGame();
+}
+
+function stopGame() {
+  gameRunning = false;
+  if (gameAnimId) cancelAnimationFrame(gameAnimId);
+}
+
+function spawnEnemyWave() {
+  if (!gameRunning) return;
+  for (let i = 0; i < 6; i++) {
+    enemies.push({
+      x: 40 + i * 85,
+      y: 30 + Math.random() * 60,
+      w: 28,
+      h: 18,
+      vx: (Math.random() > 0.5 ? 1 : -1) * 1.5,
+      color: i % 2 === 0 ? '#ff007a' : '#00f0ff'
+    });
+  }
+}
+
+function loopGame() {
+  if (!gameRunning) return;
+
+  // Clear
+  aCtx.fillStyle = '#06040d';
+  aCtx.fillRect(0, 0, arcadeCanvas.width, arcadeCanvas.height);
+
+  // Player movement
+  if (keys['ArrowLeft'] || keys['a'] || keys['A']) {
+    player.x = Math.max(10, player.x - player.speed);
+  }
+  if (keys['ArrowRight'] || keys['d'] || keys['D']) {
+    player.x = Math.min(arcadeCanvas.width - player.w - 10, player.x + player.speed);
   }
 
-  function step(){
-    ctx.clearRect(0,0,w,h);
-    for (const n of nodes){
-      n.x += n.vx; n.y += n.vy;
-      if (n.x < 0 || n.x > w) n.vx *= -1;
-      if (n.y < 0 || n.y > h) n.vy *= -1;
-      if (mouse.x !== null){
-        const dx = n.x - mouse.x, dy = n.y - mouse.y;
-        const dist = Math.sqrt(dx*dx + dy*dy);
-        if (dist < 130){
-          const force = (130 - dist) / 130 * 0.03;
-          n.vx += (dx/dist) * force;
-          n.vy += (dy/dist) * force;
-        }
-      }
-      n.vx *= 0.995; n.vy *= 0.995;
-    }
-    for (let i=0; i<nodes.length; i++){
-      for (let j=i+1; j<nodes.length; j++){
-        const a = nodes[i], b = nodes[j];
-        const dx = a.x-b.x, dy = a.y-b.y;
-        const dist = Math.sqrt(dx*dx+dy*dy);
-        if (dist < 150){
-          ctx.strokeStyle = `rgba(74,144,217,${(1 - dist/150) * 0.35})`;
-          ctx.lineWidth = 1;
-          ctx.beginPath();
-          ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y);
-          ctx.stroke();
-        }
-      }
-    }
-    for (const n of nodes){
-      ctx.beginPath();
-      ctx.arc(n.x, n.y, n.r, 0, Math.PI*2);
-      ctx.fillStyle = 'rgba(143,193,240,0.85)';
-      ctx.fill();
-    }
-    if (!reduceMotion) requestAnimationFrame(step);
+  // Draw Player Ship (Retro Pixel V-Shape)
+  aCtx.fillStyle = '#00f0ff';
+  aCtx.beginPath();
+  aCtx.moveTo(player.x + player.w / 2, player.y);
+  aCtx.lineTo(player.x + player.w, player.y + player.h);
+  aCtx.lineTo(player.x + player.w / 2, player.y + player.h - 5);
+  aCtx.lineTo(player.x, player.y + player.h);
+  aCtx.closePath();
+  aCtx.fill();
+
+  // Thruster fire
+  aCtx.fillStyle = '#ffaa00';
+  aCtx.fillRect(player.x + player.w / 2 - 2, player.y + player.h, 4, Math.random() * 8 + 3);
+
+  // Bullets
+  aCtx.fillStyle = '#ffe600';
+  for (let i = bullets.length - 1; i >= 0; i--) {
+    const b = bullets[i];
+    b.y -= b.speed;
+    aCtx.fillRect(b.x, b.y, b.w, b.h);
+    if (b.y < -10) bullets.splice(i, 1);
   }
 
-  hero.addEventListener('mousemove', (e) => {
-    const rect = hero.getBoundingClientRect();
-    mouse.x = e.clientX - rect.left;
-    mouse.y = e.clientY - rect.top;
-  });
-  hero.addEventListener('mouseleave', () => { mouse.x = null; mouse.y = null; });
+  // Enemies
+  for (let i = enemies.length - 1; i >= 0; i--) {
+    const en = enemies[i];
+    en.x += en.vx;
+    if (en.x < 10 || en.x > arcadeCanvas.width - en.w - 10) en.vx *= -1;
 
-  window.addEventListener('resize', resize, { passive: true });
-  resize();
-  step();
-})();
+    // Draw retro alien bug
+    aCtx.fillStyle = en.color;
+    aCtx.fillRect(en.x, en.y, en.w, en.h);
+    aCtx.fillStyle = '#000';
+    aCtx.fillRect(en.x + 4, en.y + 4, 4, 4);
+    aCtx.fillRect(en.x + en.w - 8, en.y + 4, 4, 4);
+
+    // Collision check with bullets
+    for (let j = bullets.length - 1; j >= 0; j--) {
+      const b = bullets[j];
+      if (b.x < en.x + en.w && b.x + b.w > en.x && b.y < en.y + en.h && b.y + b.h > en.y) {
+        bullets.splice(j, 1);
+        enemies.splice(i, 1);
+        score += 100;
+        RetroAudio.click();
+        break;
+      }
+    }
+  }
+
+  // Next wave if cleared
+  if (enemies.length === 0) {
+    score += 500;
+    RetroAudio.success();
+    spawnEnemyWave();
+  }
+
+  // Draw HUD Score
+  aCtx.font = '12px "Press Start 2P", monospace';
+  aCtx.fillStyle = '#00ff88';
+  aCtx.fillText(`SCORE: ${score}`, 16, 24);
+  aCtx.fillStyle = '#959cb8';
+  aCtx.font = '10px "JetBrains Mono", monospace';
+  aCtx.fillText(`ENEMIES: ${enemies.length}`, arcadeCanvas.width - 110, 24);
+
+  gameAnimId = requestAnimationFrame(loopGame);
+}
 </script>
 </body>
 </html>
