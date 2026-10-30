@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aaryan Bista // Retro-Modern Cyberdeck Portfolio</title>
+<title>Aaryan Bista // Portfolio</title>
 <meta name="description" content="Portfolio of Aaryan Bista — Software Engineer, AI & Computer Vision Builder, SXC Sandbox Hackathon 2.0 Champion. Pure code-crafted retro-modern cyberdeck interface.">
 
 <!-- Retro-Modern Typography: Space Grotesk, Outfit, Press Start 2P, VT323, JetBrains Mono -->
@@ -1640,7 +1640,23 @@ section {
 .cert-info p {
   font-family: var(--font-mono);
   font-size: 0.8rem;
+  color: var(--primary);
+  margin-bottom: 2px;
+}
+
+.cert-date {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  margin-top: 3px;
+}
+
+.cert-topics {
+  font-size: 0.82rem;
   color: var(--text-muted);
+  margin-top: 8px;
+  line-height: 1.45;
 }
 
 .cert-icon-link {
@@ -2113,12 +2129,14 @@ footer {
           </div>
         </div>
         <div class="skill-tags-grid">
+          <span class="skill-pill"><span class="pill-dot"></span>Django &amp; DRF</span>
           <span class="skill-pill"><span class="pill-dot"></span>FastAPI</span>
-          <span class="skill-pill"><span class="pill-dot"></span>Django</span>
+          <span class="skill-pill"><span class="pill-dot"></span>React 19 &amp; Vite</span>
+          <span class="skill-pill"><span class="pill-dot"></span>PostgreSQL</span>
+          <span class="skill-pill"><span class="pill-dot"></span>Celery &amp; Redis</span>
           <span class="skill-pill"><span class="pill-dot"></span>Laravel (PHP)</span>
           <span class="skill-pill"><span class="pill-dot"></span>RESTful APIs</span>
-          <span class="skill-pill"><span class="pill-dot"></span>WordPress</span>
-          <span class="skill-pill"><span class="pill-dot"></span>WooCommerce</span>
+          <span class="skill-pill"><span class="pill-dot"></span>WordPress / WooCommerce</span>
         </div>
       </div>
 
@@ -2152,6 +2170,8 @@ footer {
         </div>
         <div class="skill-tags-grid">
           <span class="skill-pill"><span class="pill-dot"></span>Git &amp; GitHub</span>
+          <span class="skill-pill"><span class="pill-dot"></span>Docker &amp; Compose</span>
+          <span class="skill-pill"><span class="pill-dot"></span>Playwright Automation</span>
           <span class="skill-pill"><span class="pill-dot"></span>AWS Cloud</span>
           <span class="skill-pill"><span class="pill-dot"></span>Linux (Ubuntu)</span>
           <span class="skill-pill"><span class="pill-dot"></span>PyQt Desktop GUI</span>
@@ -2268,10 +2288,32 @@ footer {
 
     <!-- Standard Projects Grid -->
     <div class="projects-standard-grid" id="standardProjectsContainer">
+      <!-- Project: PulseAPI Monitoring Platform -->
+      <div class="standard-project-card reveal" data-category="web">
+        <div class="card-top-meta">
+          <span class="card-index">03 // FULL-STACK &amp; DEVOPS</span>
+          <div class="card-quick-links">
+            <a href="https://github.com/Aaryan21323/PulseAPI" target="_blank" rel="noopener" class="quick-icon-btn" title="GitHub">⌥</a>
+          </div>
+        </div>
+        <h4 class="card-title">PulseAPI — API Monitoring Platform</h4>
+        <p class="card-desc">
+          Full-stack real-time API monitoring and observability platform. Features background Celery daemon pinging, latency percentiles (p50/p95/p99), incident webhook alerts (Slack/Discord), Stripe billing, and live public status pages.
+        </p>
+        <div class="featured-tags-row">
+          <span class="featured-tag">Django REST</span>
+          <span class="featured-tag">React 19</span>
+          <span class="featured-tag">PostgreSQL</span>
+          <span class="featured-tag">Celery &amp; Redis</span>
+          <span class="featured-tag">Docker</span>
+          <span class="featured-tag">Recharts</span>
+        </div>
+      </div>
+
       <!-- Project: Auto Subtitle Generator -->
       <div class="standard-project-card reveal" data-category="ai">
         <div class="card-top-meta">
-          <span class="card-index">03 // DESKTOP ML</span>
+          <span class="card-index">04 // DESKTOP ML</span>
           <div class="card-quick-links">
             <a href="https://github.com/Aaryan21323/AutoSubGen-Offline" target="_blank" rel="noopener" class="quick-icon-btn" title="GitHub">⌥</a>
           </div>
@@ -2284,14 +2326,137 @@ footer {
           <span class="featured-tag">Whisper ML</span>
           <span class="featured-tag">PyQt</span>
           <span class="featured-tag">Python</span>
-          <span class="featured-tag">Offline Audio</span>
+          <span class="featured-tag">FFmpeg</span>
+          <span class="featured-tag">Offline AI</span>
+        </div>
+      </div>
+
+      <!-- Project: Interactive Hand Pose Classifier -->
+      <div class="standard-project-card reveal" data-category="ai">
+        <div class="card-top-meta">
+          <span class="card-index">05 // WEB ML &amp; VISION</span>
+          <div class="card-quick-links">
+            <a href="https://github.com/Aaryan21323/js-hand-pose-training" target="_blank" rel="noopener" class="quick-icon-btn" title="GitHub">⌥</a>
+          </div>
+        </div>
+        <h4 class="card-title">In-Browser Hand Pose Classifier</h4>
+        <p class="card-desc">
+          Client-side computer vision application utilizing TensorFlow.js and ml5.js. Tracks camera input through the HandPose neural landmark model and trains KNN classifiers in real time to recognize custom gesture poses without server roundtrips.
+        </p>
+        <div class="featured-tags-row">
+          <span class="featured-tag">TensorFlow.js</span>
+          <span class="featured-tag">ml5.js</span>
+          <span class="featured-tag">HandPose Model</span>
+          <span class="featured-tag">KNN Classifier</span>
+          <span class="featured-tag">WebCam Vision</span>
+        </div>
+      </div>
+
+      <!-- Project: Ekantipur Playwright Scraper -->
+      <div class="standard-project-card reveal" data-category="web">
+        <div class="card-top-meta">
+          <span class="card-index">06 // WEB AUTOMATION</span>
+          <div class="card-quick-links">
+            <a href="https://github.com/Aaryan21323/ekantipur-playwright-scraper" target="_blank" rel="noopener" class="quick-icon-btn" title="GitHub">⌥</a>
+          </div>
+        </div>
+        <h4 class="card-title">Ekantipur Playwright Scraper</h4>
+        <p class="card-desc">
+          Automated web scraping pipeline engineered with Python and Microsoft Playwright. Drives headless Chromium to extract the top entertainment headlines and daily editorial cartoons from ekantipur.com with robust DOM navigation.
+        </p>
+        <div class="featured-tags-row">
+          <span class="featured-tag">Python</span>
+          <span class="featured-tag">Playwright</span>
+          <span class="featured-tag">Headless Chromium</span>
+          <span class="featured-tag">Web Scraping</span>
+          <span class="featured-tag">Data Automation</span>
+        </div>
+      </div>
+
+      <!-- Project: Laravel E-Commerce -->
+      <div class="standard-project-card reveal" data-category="web">
+        <div class="card-top-meta">
+          <span class="card-index">07 // FULL-STACK MVC</span>
+          <div class="card-quick-links">
+            <a href="https://github.com/Aaryan21323/Ecommerce-Website" target="_blank" rel="noopener" class="quick-icon-btn" title="GitHub">⌥</a>
+          </div>
+        </div>
+        <h4 class="card-title">Laravel E-Commerce CRUD</h4>
+        <p class="card-desc">
+          Full-stack online commerce web application featuring customer authentication, product inventory management, relational MySQL schema with migrations, cart flow, and secure order processing.
+        </p>
+        <div class="featured-tags-row">
+          <span class="featured-tag">Laravel</span>
+          <span class="featured-tag">PHP</span>
+          <span class="featured-tag">MySQL</span>
+          <span class="featured-tag">Blade</span>
+          <span class="featured-tag">MVC Architecture</span>
+        </div>
+      </div>
+
+      <!-- Project: WordPress WooCommerce Store -->
+      <div class="standard-project-card reveal" data-category="web">
+        <div class="card-top-meta">
+          <span class="card-index">08 // CMS COMMERCE</span>
+        </div>
+        <h4 class="card-title">WordPress WooCommerce Store</h4>
+        <p class="card-desc">
+          Fully functional bespoke ecommerce storefront configured on WordPress and WooCommerce. Engineered and tested locally on XAMPP with product catalogues, payment gateways, and shipping zones.
+        </p>
+        <div class="featured-tags-row">
+          <span class="featured-tag">WordPress</span>
+          <span class="featured-tag">WooCommerce</span>
+          <span class="featured-tag">XAMPP</span>
+          <span class="featured-tag">PHP</span>
+          <span class="featured-tag">Payment Gateways</span>
+        </div>
+      </div>
+
+      <!-- Project: GNOME Nepal Official Website -->
+      <div class="standard-project-card reveal" data-category="web">
+        <div class="card-top-meta">
+          <span class="card-index">09 // OPEN SOURCE COMMUNITY</span>
+          <div class="card-quick-links">
+            <a href="https://github.com/Aaryan21323/website" target="_blank" rel="noopener" class="quick-icon-btn" title="GitHub">⌥</a>
+          </div>
+        </div>
+        <h4 class="card-title">GNOME Nepal Community Portal</h4>
+        <p class="card-desc">
+          Official open-source community portal for GNOME Nepal. Developed alongside regional open-source contributors to advocate for Linux desktop environments, FOSS advocacy, and local developer community meetups.
+        </p>
+        <div class="featured-tags-row">
+          <span class="featured-tag">Open Source</span>
+          <span class="featured-tag">HTML5 / CSS3</span>
+          <span class="featured-tag">GNOME Linux</span>
+          <span class="featured-tag">FOSS Nepal</span>
+          <span class="featured-tag">Community</span>
+        </div>
+      </div>
+
+      <!-- Project: LeetCode Solutions -->
+      <div class="standard-project-card reveal" data-category="ai">
+        <div class="card-top-meta">
+          <span class="card-index">10 // ALGORITHMS &amp; DS</span>
+          <div class="card-quick-links">
+            <a href="https://github.com/Aaryan21323/Leetcode" target="_blank" rel="noopener" class="quick-icon-btn" title="GitHub">⌥</a>
+          </div>
+        </div>
+        <h4 class="card-title">LeetCode Solutions &amp; DSA</h4>
+        <p class="card-desc">
+          Repository of optimized algorithmic problem solutions in Python covering binary trees, two-pointer techniques, dynamic programming, sliding windows, and computational complexity analysis.
+        </p>
+        <div class="featured-tags-row">
+          <span class="featured-tag">Python</span>
+          <span class="featured-tag">Data Structures</span>
+          <span class="featured-tag">Algorithms</span>
+          <span class="featured-tag">Problem Solving</span>
         </div>
       </div>
 
       <!-- Project: Clicky Crates Game -->
       <div class="standard-project-card reveal" data-category="games">
         <div class="card-top-meta">
-          <span class="card-index">04 // UNITY GAME</span>
+          <span class="card-index">11 // UNITY GAME</span>
           <div class="card-quick-links">
             <a href="https://github.com/Aaryan21323/unity-clicky-crates" target="_blank" rel="noopener" class="quick-icon-btn" title="GitHub">⌥</a>
             <a href="https://play.unity.com/api/v1/games/game/17f687f9-3987-4253-aeb5-559feae9d454/build/latest/frame" target="_blank" rel="noopener" class="quick-icon-btn" style="color:var(--secondary)" title="Play Game">▶</a>
@@ -2312,7 +2477,7 @@ footer {
       <!-- Project: Endless Runner -->
       <div class="standard-project-card reveal" data-category="games">
         <div class="card-top-meta">
-          <span class="card-index">05 // UNITY GAME</span>
+          <span class="card-index">12 // UNITY GAME</span>
           <div class="card-quick-links">
             <a href="https://github.com/Aaryan21323/unity-endless-runner" target="_blank" rel="noopener" class="quick-icon-btn" title="GitHub">⌥</a>
             <a href="https://play.unity.com/api/v1/games/game/4453fd07-0702-4e9b-ab97-72b32b0b4edf/build/latest/frame" target="_blank" rel="noopener" class="quick-icon-btn" style="color:var(--secondary)" title="Play Game">▶</a>
@@ -2330,40 +2495,68 @@ footer {
         </div>
       </div>
 
-      <!-- Project: Laravel E-Commerce -->
-      <div class="standard-project-card reveal" data-category="web">
+      <!-- Project: Push The Ball Game -->
+      <div class="standard-project-card reveal" data-category="games">
         <div class="card-top-meta">
-          <span class="card-index">06 // FULL-STACK</span>
+          <span class="card-index">13 // UNITY GAME</span>
           <div class="card-quick-links">
-            <a href="https://github.com/Aaryan21323/Ecommerce-Website" target="_blank" rel="noopener" class="quick-icon-btn" title="GitHub">⌥</a>
+            <a href="https://github.com/Aaryan21323/push-the-ball-game-unity-junior-programmer-unit-4" target="_blank" rel="noopener" class="quick-icon-btn" title="GitHub">⌥</a>
+            <a href="https://play.unity.com/api/v1/games/game/3b2cad76-18fd-4ebb-a53f-098c0056ac2d/build/latest/frame" target="_blank" rel="noopener" class="quick-icon-btn" style="color:var(--secondary)" title="Play Game">▶</a>
           </div>
         </div>
-        <h4 class="card-title">Laravel E-Commerce CRUD</h4>
+        <h4 class="card-title">Push The Ball 3D</h4>
         <p class="card-desc">
-          Full-stack online commerce web application featuring customer authentication, product inventory management, relational MySQL schema with migrations, cart flow, and secure order processing.
+          Interactive 3D physics arena game in Unity C#. Features spherical rigid-body physics, wave-based enemy difficulty scaling, powerup mechanics, UI game loop, and playable WebGL build.
         </p>
         <div class="featured-tags-row">
-          <span class="featured-tag">Laravel</span>
-          <span class="featured-tag">PHP</span>
-          <span class="featured-tag">MySQL</span>
-          <span class="featured-tag">MVC Architecture</span>
+          <span class="featured-tag">Unity</span>
+          <span class="featured-tag">C#</span>
+          <span class="featured-tag">Physics Arena</span>
+          <span class="featured-tag">WebGL</span>
+          <span class="featured-tag">Wave Mechanics</span>
         </div>
       </div>
 
-      <!-- Project: WordPress WooCommerce Store -->
-      <div class="standard-project-card reveal" data-category="web">
+      <!-- Project: Animal Feeder Game -->
+      <div class="standard-project-card reveal" data-category="games">
         <div class="card-top-meta">
-          <span class="card-index">07 // CMS COMMERCE</span>
+          <span class="card-index">14 // UNITY GAME</span>
+          <div class="card-quick-links">
+            <a href="https://github.com/Aaryan21323/junior-programmer-animal-game" target="_blank" rel="noopener" class="quick-icon-btn" title="GitHub">⌥</a>
+            <a href="https://play.unity.com/api/v1/games/game/f6654856-109d-4a4e-920e-29b3c4ab8bba/build/latest/frame" target="_blank" rel="noopener" class="quick-icon-btn" style="color:var(--secondary)" title="Play Game">▶</a>
+          </div>
         </div>
-        <h4 class="card-title">WordPress WooCommerce Store</h4>
+        <h4 class="card-title">Animal Feeder 3D</h4>
         <p class="card-desc">
-          Fully functional bespoke ecommerce storefront configured on WordPress and WooCommerce. Engineered and tested locally on XAMPP with product catalogues, payment gateways, and shipping zones.
+          Arcade-style reflex game created with Unity C#. Features lateral player movement clamping, dynamic projectile spawning, boundary despawn memory management, and live score tracking.
         </p>
         <div class="featured-tags-row">
-          <span class="featured-tag">WordPress</span>
-          <span class="featured-tag">WooCommerce</span>
-          <span class="featured-tag">XAMPP</span>
-          <span class="featured-tag">PHP</span>
+          <span class="featured-tag">Unity</span>
+          <span class="featured-tag">C#</span>
+          <span class="featured-tag">Projectiles</span>
+          <span class="featured-tag">WebGL</span>
+          <span class="featured-tag">Game Logic</span>
+        </div>
+      </div>
+
+      <!-- Project: Simple Car Game -->
+      <div class="standard-project-card reveal" data-category="games">
+        <div class="card-top-meta">
+          <span class="card-index">15 // UNITY GAME</span>
+          <div class="card-quick-links">
+            <a href="https://github.com/Aaryan21323/simple-car-game-unity" target="_blank" rel="noopener" class="quick-icon-btn" title="GitHub">⌥</a>
+            <a href="https://play.unity.com/api/v1/games/game/4b6b1c40-b95a-4d8a-b7e1-5a92e5b083d5/build/latest/frame" target="_blank" rel="noopener" class="quick-icon-btn" style="color:var(--secondary)" title="Play Game">▶</a>
+          </div>
+        </div>
+        <h4 class="card-title">Simple Car Simulator 3D</h4>
+        <p class="card-desc">
+          3D vehicular movement prototype in Unity C#. Emphasizes velocity physics, steering angle calculation, smooth camera follow logic, and vehicle obstacle navigation on roadways.
+        </p>
+        <div class="featured-tags-row">
+          <span class="featured-tag">Unity</span>
+          <span class="featured-tag">C#</span>
+          <span class="featured-tag">Vehicle Physics</span>
+          <span class="featured-tag">WebGL</span>
         </div>
       </div>
     </div>
@@ -2443,21 +2636,38 @@ footer {
     </div>
 
     <div class="cert-grid">
-      <a href="https://coursera.org/verify/professional-cert/G30LX0LHKJZD" target="_blank" rel="noopener" class="cert-retro-card reveal">
+      <!-- Certificate 1: Google IT Automation with Python -->
+      <a href="https://coursera.org/verify/professional-cert/ZXRYXJ5ZVD82" target="_blank" rel="noopener" class="cert-retro-card reveal">
         <div class="cert-info">
-          <h3>Google AI Professional Certificate</h3>
-          <p>Coursera Verified · Issued Jul 2026</p>
+          <h3>Google IT Automation with Python</h3>
+          <p>Google via Coursera</p>
+          <span class="cert-date">Issued: Sep 01, 2026</span>
+          <div class="cert-topics">7 Courses: Python, Git, Debugging, Cloud, IT Automation</div>
         </div>
         <div class="cert-icon-link">↗</div>
       </a>
 
-      <div class="cert-retro-card reveal">
+      <!-- Certificate 2: Google AI Professional Certificate -->
+      <a href="https://coursera.org/verify/professional-cert/G30LX0LHKJZD" target="_blank" rel="noopener" class="cert-retro-card reveal">
+        <div class="cert-info">
+          <h3>Google AI Professional Certificate</h3>
+          <p>Google via Coursera</p>
+          <span class="cert-date">Issued: Jul 26, 2026</span>
+          <div class="cert-topics">7 Courses: AI Fundamentals, Brainstorming, Research, Writing, Content Creation, Data Analysis, App Building</div>
+        </div>
+        <div class="cert-icon-link">↗</div>
+      </a>
+
+      <!-- Certificate 3: Associate Python Developer -->
+      <a href="https://www.datacamp.com/completed/statement-of-accomplishment/track/05d3fa92b883d1de81c65d9909a239ad218c19b4?utm_medium=organic_social&amp;utm_campaign=sharewidget&amp;utm_content=soa" target="_blank" rel="noopener" class="cert-retro-card reveal">
         <div class="cert-info">
           <h3>Associate Python Developer</h3>
-          <p>DataCamp Verified · Issued May 2026</p>
+          <p>DataCamp Verified</p>
+          <span class="cert-date">Issued: May 09, 2026</span>
+          <div class="cert-topics">30 Hours: Python programming, data structures, functions, dev practices</div>
         </div>
-        <div class="cert-icon-link">✓</div>
-      </div>
+        <div class="cert-icon-link">↗</div>
+      </a>
     </div>
   </div>
 </section>
@@ -2508,9 +2718,6 @@ footer {
       <span>© 2026 AARYAN BISTA</span>
       <span>//</span>
       <span>BUILT IN KATHMANDU, NEPAL</span>
-    </div>
-    <div class="footer-right">
-      <span>RETRO-MODERN CODE ARCHITECTURE // NO AI ASSETS</span>
     </div>
   </div>
 </footer>
@@ -3225,6 +3432,7 @@ termInput.addEventListener('keydown', (e) => {
         appendTermLine('  skills     - Hardware matrix & modules');
         appendTermLine('  projects   - Highlighted systems in the vault');
         appendTermLine('  trophy     - SXC Hackathon 2.0 1st place info');
+        appendTermLine('  certs      - Verified credentials & certificates');
         appendTermLine('  contact    - Transmission frequencies');
         appendTermLine('  play       - Launch the retro mini-arcade');
         appendTermLine('  crt        - Toggle CRT scanline screen');
@@ -3241,23 +3449,35 @@ termInput.addEventListener('keydown', (e) => {
         break;
 
       case 'skills':
-        appendTermLine('AI & CV: OpenCV, MediaPipe, Whisper, Groq, Qdrant, Redis', 'warning');
-        appendTermLine('Languages: Python, C#, Java, C/C++, SQL, JavaScript', 'dim');
-        appendTermLine('Web: FastAPI, Django, Laravel, WordPress, WooCommerce', 'dim');
-        appendTermLine('Game Dev: Unity Engine, Unreal Engine 5, C# Mechanics', 'dim');
+        appendTermLine('AI & CV: OpenCV, MediaPipe, Whisper, Groq, Qdrant, TensorFlow.js, Redis', 'warning');
+        appendTermLine('Languages: Python, TypeScript, JavaScript, C#, PHP, SQL, C/C++', 'dim');
+        appendTermLine('Web & Backend: Django REST, FastAPI, React 19, Docker, Celery, Laravel, Postgres', 'dim');
+        appendTermLine('Game Dev & Tools: Unity Engine, WebGL, Playwright, Git, Linux', 'dim');
         break;
 
       case 'projects':
         appendTermLine('1. VisionMate (Python/OpenCV/MediaPipe) - 1st Place Hackathon', 'warning');
-        appendTermLine('2. Conversational RAG (FastAPI/Groq/Qdrant/Redis)', 'success');
-        appendTermLine('3. AutoSubGen Offline (PyQt/Whisper)', 'dim');
-        appendTermLine('4. Clicky Crates & Endless Runner (Unity WebGL)', 'dim');
+        appendTermLine('2. Conversational RAG Engine (FastAPI/Groq/Qdrant/Redis)', 'success');
+        appendTermLine('3. PulseAPI Monitoring Platform (Django/React 19/Celery/Docker)', 'success');
+        appendTermLine('4. AutoSubGen Offline (PyQt/Whisper/FFmpeg)', 'dim');
+        appendTermLine('5. In-Browser Hand Pose Classifier (TensorFlow.js/ml5.js)', 'dim');
+        appendTermLine('6. Ekantipur Playwright Scraper & Automation (Python)', 'dim');
+        appendTermLine('7. Laravel & WooCommerce E-Commerce Systems (PHP/MySQL)', 'dim');
+        appendTermLine('8. Unity 3D WebGL Games (Clicky Crates, Endless Runner, Push Ball, Car Sim)', 'dim');
         break;
 
       case 'trophy':
         appendTermLine('🏆 1ST PLACE WINNER // SXC SANDBOX HACKATHON 2.0', 'warning');
         appendTermLine('Prize: Rs 75,000. Project: VisionMate accessibility CV.', 'success');
         RetroAudio.success();
+        break;
+
+      case 'certs':
+      case 'certificates':
+        appendTermLine('VERIFIED PROFESSIONAL CREDENTIALS:', 'system');
+        appendTermLine('1. Google IT Automation with Python (Coursera) - Sep 2026', 'success');
+        appendTermLine('2. Google AI Professional Certificate (Coursera) - Jul 2026', 'success');
+        appendTermLine('3. Associate Python Developer (DataCamp) - May 2026', 'dim');
         break;
 
       case 'contact':
